@@ -1,0 +1,151 @@
+LANG_LABEL_ID	en	zh-CN	zh-TW	russian	korean	jpn		
+LANG_STRINGS	英语 English 	中文 Chinese Simplified	中文繁体 Chinese Traditional	俄语Русский	韩语	日本語		
+LANG_LABEL_RECORDPREVIEW_MENU	video preview settings	录像预览设置	錄像預覽設置	Настройки Видео-превью	비디오 미리보기 설정	ビデオプレビューの設定		
+LANG_LABEL_PHOTO_MENU	photo  settings	拍照设置	拍照設置	настройки фото	사진 설정	フォト設定		
+LANG_LABEL_PLAYBACKPREVIEW_MENU	playback preview settings	回放预览设置	回放預覽設置	настройки просмотра	재생 미리보기 설정	再生プレビュー設定		
+LANG_LABEL_SYSTEM_MENU	system settings	系统设置	系統設置	настройки системы	시스템 설정	システム設定		
+LANG_LABEL_MENU_PARK	Parking control	停车模式	停車模式	Парковка Мониторинг	주차 모니터링	駐車場の監視		
+LANG_LABEL_MENU_GSENSOR	G-Sensor	重力感应	重力感應	Парковка	차 감시 감도	駐車監視感度		
+LANG_LABEL_MENU_RECORD_SOUND	Recording sound	录像声音	錄像聲音	Запись звука	사운드를 녹음	レコードの音		
+LANG_LABEL_MENU_VOICEVOL	Volume	音量	音量	громкость	소리	ボリューム		
+LANG_LABEL_MENU_KEYTONE	Key tone	按键音	按鍵音	Тональность	키 톤	キー音		
+LANG_LABEL_MENU_LIGHT_FREQ	Light frequency	光频设置	光頻設置	частота света	빛의 주파수	光周波数		
+LANG_LABEL_MENU_TFCARD_INFO	TFcard info	卡信息	卡信息	карты памяти	메모리 카드	メモリカード		
+LANG_LABEL_MENU_DELAY_SHUTDOWN	Delay shutdown	延时关机	延時關機	выключение задержки	지연 종료	遅延シャットダウン		
+LANG_LABEL_MENU_FORMAT	Formatting	格式化	格式化	формат	체재	フォーマット		
+LANG_LABEL_MENU_LANG	Language	语言	語言	язык	언어	言語		
+LANG_LABEL_MENU_DATE	Date	日期	日期	дата	날짜	日付		
+LANG_LABEL_MENU_SS	Screen switch	屏幕休眠	屏幕休眠	Переключить	화면 전환	画面の切り替え		
+LANG_LABEL_MENU_STANDBY_MODE	Standby mode	待机模式	待機模式	в режиме ожидания	대기 모드	スタンバイモード		
+LANG_LABEL_MENU_FIRMWARE	Firmware version	固件版本	固件版本	Версия прошивки	펌웨어 버전	ファームウェアバ		
+LANG_LABEL_MENU_FRESET	Restore factory settings	恢复出厂设置	恢復出廠設置	Восстановление	초기 설정 복원	工場出荷時の設定を復元します		
+LANG_LABEL_MENU_ALIGNLINE	Camera Flip	后拉镜像	後拉鏡像	камера оборот	카메라 뒤집기	カメラフリップ		
+LANG_LABEL_MENU_WIFI	WiFi	WiFi	WiFi	Wi-Fi	와이파이	Wi-Fi		
+LANG_LABEL_MENU_VIDEO_RESOLUTION	Video resolution	视频尺寸	視頻尺寸	Качество видео	비디오 품질	ビデオ画質		
+LANG_LABEL_MENU_VIDEO_BITRATE	Video bitrate	视频质量	視頻質量	битрейт видео	비디오 비트 전송률	ビデオのビットレート		
+LANG_LABEL_MENU_PHOTO_RESOLUTION	Photo resolution	图像尺寸	圖像尺寸	разрешение фото	사진 해상도	写真の解像度		
+LANG_LABEL_MENU_PHOTO_COMPRESSION_QUALITY	Photo compression quality	图像质量	圖像質量	Качество изображения	이미지 품질	画質		
+LANG_LABEL_MENU_VTL	Loop recording	循环录像	循環錄像	Длина записи	녹화 시간	記録長		
+LANG_LABEL_MENU_WB	White balance	白平衡	白平衡	баланс белого	화이트 밸런스	ホワイトバランス		
+LANG_LABEL_MENU_CONTRAST	Contrast	对比度	對比度	контраст	대조	コントラスト		
+LANG_LABEL_MENU_EXPOSURE	Exposure	曝光	曝光	экспозиция	노출	暴露		
+LANG_LABEL_MENU_POR	Power on video	上电录像	上電錄像	Power-на видео	비디오 전원에	パワーオンビデオ		
+LANG_LABEL_MENU_PHOTO_WM	Photo watermark	拍照水印	拍照水印	Фото водяной знак	사진 워터 마크	写真透かし		
+LANG_LABEL_MENU_TWM	The time watermark	时间水印	時間水印	Время водяных знаков	시간 워터 마크	タイム透かし		
+LANG_LABEL_MENU_AWMD	Motion detection	移动侦测	移動偵測	Обнаружение движения	모션 감지	動き検出		
+LANG_LABEL_MENU_LICENSE_PLATE_WM	Vehicle license plate watermark	车牌水印	車牌水印	номерной знак Водяной знак	번호판 워터 마크	ナンバープレートの透かし		
+LANG_LABEL_MENU_SMARTALGORITHM	Intelligent algorithm	智能算法	智能算法	Интеллектуальный	지능형 알고리즘	知的アルゴリズム		
+LANG_LABEL_SUBMENU_PARK_TITLE	Parking control	停车模式	停車模式	Парковка Мониторинг	주차 모니터링	駐車場の監視		
+LANG_LABEL_SUBMENU_PARK_CONTENT0	Close	关闭	關閉	выключить	종료	シャットダウン		
+LANG_LABEL_SUBMENU_PARK_CONTENT1	Low	低	低	низкий	낮은	低い		
+LANG_LABEL_SUBMENU_PARK_CONTENT2	Middle	中	中	средний	중간	ミドル		
+LANG_LABEL_SUBMENU_PARK_CONTENT3	High	高	高	высокая	높은	高い		
+LANG_LABEL_SUBMENU_GSENSOR_TITLE	G-Sensor sensititivity	重力感应灵敏度	重力感應靈敏度	Парковка	차 감시 감도	駐車監視感度		
+LANG_LABEL_SUBMENU_GSENSOR_CONTENT0	close	关闭	關閉	выключить	종료	シャットダウン		
+LANG_LABEL_SUBMENU_GSENSOR_CONTENT1	low	低	低	низкой	낮다	低い		
+LANG_LABEL_SUBMENU_GSENSOR_CONTENT2	middle	中	中	средний	중간	ミドル		
+LANG_LABEL_SUBMENU_GSENSOR_CONTENT3	High	高	高	высокая	높은	高い		
+LANG_LABEL_SUBMENU_VOICEVOL_TITLE	Volume	音量	音量	громкость	소리	音量		
+LANG_LABEL_SUBMENU_VOICEVOL_CONTENT0	high	高	高	высокий	높은	高い		
+LANG_LABEL_SUBMENU_VOICEVOL_CONTENT1	middle	中	中	в	중	の中で		
+LANG_LABEL_SUBMENU_VOICEVOL_CONTENT2	low	低	低	низкой	낮다	低い		
+LANG_LABEL_SUBMENU_LIGHT_FREQ_TITLE	Light frequency	光频设置	光頻設置	частота света	빛의 주파수	光周波数		
+LANG_LABEL_SUBMENU_LIGHT_FREQ_CONTENT0	50Hz	50Hz	50Hz	50Hz	50Hz	50Hz		
+LANG_LABEL_SUBMENU_LIGHT_FREQ_CONTENT1	60Hz	60Hz	60Hz	60Hz	60Hz	60Hz		
+LANG_LABEL_SUBMENU_LANG_TITLE	Language	语言	語言	язык	언어	言語		
+LANG_LABEL_SUBMENU_LANG_CONTENT0	简体中文	简体中文	简体中文	简体中文	简体中文	简体中文		
+LANG_LABEL_SUBMENU_LANG_CONTENT1	繁體中文	繁體中文	繁體中文	繁體中文	繁體中文	繁體中文		
+LANG_LABEL_SUBMENU_LANG_CONTENT2	English	English	English	English	English	English		
+LANG_LABEL_SUBMENU_LANG_CONTENT3	日本語	日本語	日本語	日本語	日本語	日本語		
+LANG_LABEL_SUBMENU_LANG_CONTENT4	한국의	한국의	한국의	한국의	한국의	한국의		
+LANG_LABEL_SUBMENU_LANG_CONTENT5	русский	русский	русский	русский	русский	русский		
+LANG_LABEL_SUBMENU_SS_TITLE	Screen switch	屏幕休眠	屏幕休眠	Переключить	화면 전환	画面の切り替え		
+LANG_LABEL_SUBMENU_SS_CONTENT0	10 seconds	10秒	10秒	10 секунд	십초	10秒		
+LANG_LABEL_SUBMENU_SS_CONTENT1	20 seconds	20秒	20秒	20 секунд	20초	20秒		
+LANG_LABEL_SUBMENU_SS_CONTENT2	30 seconds	30秒	30秒	30 секунд	30초	30秒		
+LANG_LABEL_SUBMENU_SS_CONTENT3	Close	关闭	關閉	выключить	종료	シャットダウン		
+LANG_LABEL_SUBMENU_VIDEO_RESOLUTION_TITLE	The video quality	录像质量	錄像質量	Качество видео	비디오 품질	ビデオ画質		
+LANG_LABEL_SUBMENU_VIDEO_RESOLUTION_CONTENT0	1080P	1080P	1080P	1080P	1080P	1080P		
+LANG_LABEL_SUBMENU_VIDEO_RESOLUTION_CONTENT1	720P	720P	720P	720P	720P	720P		
+LANG_LABEL_SUBMENU_VIDEO_BITRATE_TITLE	The video bitrate	视频质量	視頻質量	битрейт видео	비디오 비트 전송률	ビデオのビットレート		
+LANG_LABEL_SUBMENU_VIDEO_BITRATE_CONTENT0	general	一般	一般	генерал	일반	一般的な		
+LANG_LABEL_SUBMENU_VIDEO_BITRATE_CONTENT1	good	好	好	хорошо	좋아요	はい		
+LANG_LABEL_SUBMENU_VIDEO_BITRATE_CONTENT2	very good	超好	超好	Супер хороший	슈퍼 좋은	スーパー良い		
+LANG_LABEL_SUBMENU_PHOTO_RESOLUTION_TITLE	The photo resolution	图像尺寸	圖像尺寸	разрешение фото	사진 해상도	写真の解像度		
+LANG_LABEL_SUBMENU_PHOTO_RESOLUTION_CONTENT0	2M	2M	2M	2M	2M	2M		
+LANG_LABEL_SUBMENU_PHOTO_RESOLUTION_CONTENT1	5M	5M	5M	5M	5M	5M		
+LANG_LABEL_SUBMENU_PHOTO_RESOLUTION_CONTENT2	8M	8M	8M	8M	8M	8M		
+LANG_LABEL_SUBMENU_PHOTO_RESOLUTION_CONTENT3	12M	12M	12M	12M	12M	12M		
+LANG_LABEL_SUBMENU_PHOTO_COMPRESSION_QUALITY_TITLE	Photo compression quality	图像质量	圖像質量	Качество изображения	이미지 품질	画質		
+LANG_LABEL_SUBMENU_PHOTO_COMPRESSION_QUALITY_CONTENT0	general	一般	一般	генерал	일반	一般的な		
+LANG_LABEL_SUBMENU_PHOTO_COMPRESSION_QUALITY_CONTENT1	good	好	好	хорошо	좋아요	はい		
+LANG_LABEL_SUBMENU_PHOTO_COMPRESSION_QUALITY_CONTENT2	very good	超好	超好	Супер хороший	슈퍼 좋은	スーパー良い		
+LANG_LABEL_SUBMENU_VTL_TITLE	Loop recording	循环录像	循環錄像	Длина записи	녹화 시간	記録長		
+LANG_LABEL_SUBMENU_VTL_CONTENT0	1 minutes	1分钟	1分鐘	1 минута	1분	1分		
+LANG_LABEL_SUBMENU_VTL_CONTENT1	3 minutes	3分钟	3分鐘	3 минут	3분	3分		
+LANG_LABEL_SUBMENU_VTL_CONTENT2	5 minutes	5分钟	5分鐘	5 минут	5분	5分		
+LANG_LABEL_SUBMENU_WB_TITLE	White balance	白平衡	白平衡	баланс	화이트 밸런스	ホワイトバランス		
+LANG_LABEL_SUBMENU_WB_CONTENT0	Automatic	自动	自動	автомат	자동적 인	自動		
+LANG_LABEL_SUBMENU_WB_CONTENT1	A sunny day	晴天	晴天	Солнечный	화창한 날	晴れた日		
+LANG_LABEL_SUBMENU_WB_CONTENT2	Cloudy	阴天	陰天	Пасмурный	흐린 날	曇りの日		
+LANG_LABEL_SUBMENU_WB_CONTENT3	Incandescent light	白炽光	白熾光	Лампа	백열	白熱ランプ		
+LANG_LABEL_SUBMENU_WB_CONTENT4	Fluorescence	荧光	熒光	флуорес	형광	蛍光		
+LANG_LABEL_SUBMENU_CONTRAST_TITLE	Contrast	对比度	對比度	контраст	대조	コントラスト		
+LANG_LABEL_SUBMENU_CONTRAST_CONTENT0	0	0	0	0	0	0		
+LANG_LABEL_SUBMENU_CONTRAST_CONTENT1	1	1	1	1	(1)	1		
+LANG_LABEL_SUBMENU_CONTRAST_CONTENT2	2	2	2	2	이	2		
+LANG_LABEL_SUBMENU_CONTRAST_CONTENT3	3	3	3	3	3	3		
+LANG_LABEL_SUBMENU_CONTRAST_CONTENT4	4	4	4	4	4	4		
+LANG_LABEL_SUBMENU_CONTRAST_CONTENT5	5	5	5	5	(5)	5		
+LANG_LABEL_SUBMENU_EXPOSURE_TITLE	Exposure	曝光	曝光	экспозиция	노출	暴露		
+LANG_LABEL_SUBMENU_EXPOSURE_CONTENT0	-3	-3	-3	-3	-3	-3		
+LANG_LABEL_SUBMENU_EXPOSURE_CONTENT1	-2	-2	-2	-2	-2	-2		
+LANG_LABEL_SUBMENU_EXPOSURE_CONTENT2	-1	-1	-1	-1	-1	-1		
+LANG_LABEL_SUBMENU_EXPOSURE_CONTENT3	0	0	0	0	0	0		
+LANG_LABEL_SUBMENU_EXPOSURE_CONTENT4	1	1	1	1	(1)	1		
+LANG_LABEL_SUBMENU_EXPOSURE_CONTENT5	2	2	2	2	이	2		
+LANG_LABEL_SUBMENU_EXPOSURE_CONTENT6	3	3	3	3	3	3		
+LANG_LABEL_SUBMENU_OK	Confirmation	确认	確認	подтвердить	확인	確認する		
+LANG_LABEL_SUBMENU_CANCEL	Cancel	取消	取消	отменить	취소	キャンセル		
+LANG_LABEL_SUBMENU_FORMAT_TITLE	Formatting	格式化	格式化	формат	체재	フォーマット		
+LANG_LABEL_SUBMENU_FORMAT_TEXT	Confirmation will be memory card format?	确认将内存卡格式化？	確認將內存卡格式化？	Подтверждение отформатировать	확인은 메모리 카드를 포맷합니다?	確認は、メモリ		
+LANG_LABEL_SUBMENU_FORMATTING_TEXT	Formatting...	正在格式化...	正在格式化...	Форматирование ...	서식 ...	フォーマット...		
+LANG_LABEL_SUBMENU_FRESET_TITLE	Restore factory settings	恢复出厂设置	恢復出廠設置	Восстановление	초기 설정 복원	工場出荷時の設定		
+LANG_LABEL_SUBMENU_FRESET_TEXT	Confirm restore factory settings?	确认恢复出厂设置？	確認恢復出廠設置？	Подтверждение восстановления	기본 설정을 복원 확인?	工場出荷時の設定を復元しますか？		
+LANG_LABEL_SCREEN_SHOT	Save screenshot...	正在保存屏幕截图...	正在保存屏幕截圖...	Сохранение скриншот ...	스크린 샷 저장 중 ...	スクリーンショットを保存しています...		
+LANG_LABEL_WARNING	Warning	警告	警告	предостережение	경고	警告		
+LANG_LABEL_TIPS	Prompt	提示	提示	подсказка	신속한	プロンプト		
+LANG_LABEL_NO_TFCARD	No detectable TF card, please insert TF card!	没有检测到TF卡,请插入TF卡！	沒有檢測到TF卡,請插入TF卡！	TF карта не обнаружена,	TF 카드가 감지되지 않습니다, 삽입 TF 카드!	TFカードが検出されず、TFカードを挿入！		
+LANG_LABEL_TFCARD_FULL	Insufficient storage space in the TF card!	TF卡存储空间不足！	TF卡存儲空間不足！	Недостаточное TF памяти на карте памяти!	부적절한 TF 카드 저장 공간!	不十分なTFカード収納スペース！		
+LANG_LABEL_FORMATTING	Formatting, TF card is not available!	正在格式化,TF卡不可用!	正在格式化，TF卡不可用！	Форматирование карты памяти	서식, TF 카드를 사용할 수 없습니다!	書式設定、TFカードは使用できません！		
+LANG_LABEL_DATE_TITLE	Date	日期	日期	дата	날짜	日付		
+LANG_LABEL_DATE_YEAR	/	/	/	/	/	/		
+LANG_LABEL_DATE_MONTH	/	/	/	/	/	/		
+LANG_LABEL_DATE_DAY								
+LANG_LABEL_DATE_HOUR	:	:	:	:	:	:		
+LANG_LABEL_DATE_MINUTE	:	:	:	:	:	:		
+LANG_LABEL_DATE_SECOND								
+LANG_LABEL_DELETEFILE_TITLE	Delete	删除	刪除	удалять	삭제	削除		
+LANG_LABEL_DELETEFILE_TEXT	Delete this file?	确认删除此文件？	確認刪除此文件？	Подтвердить удалить этот файл?	이 파일을 삭제 확인?	このファイルを削除しますか？		
+LANG_LABEL_SHUTDOWN_TITLE	Power off prompt	关机提示	關機提示	предупреждать	밀고하다	密告		
+LANG_LABEL_SHUTDOWN_TEXT	Confirmation will be shut down!	确认将关机!	確認將關機!	Подтвердите остановку!	종료를 확인!	シャットダウンを確認してください！		
+LANG_LABEL_OPEN_USB_STORAGE_DEVICE	Open the USB storage device	打开USB存储设备	打開USB存儲設備	Откройте устройство хранения USB	USB 저장 장치를 열고	USBストレージデバイスを開き		
+LANG_LABEL_CLOSE_USB_STORAGE_DEVICE	Close the USB storage device	关闭USB存储设备	關閉USB存儲設備	Выключите хранения USB устройство	USB 저장 장치의 전원을 끄고	USBストレージデバイスの電源を切ります		
+LANG_LABEL_CHARGE_MODE	Charging mode	充电模式	充電模式	Режим зарядки	충전 모드	充電モード		
+LANG_LABEL_LOW_POWER_SHUTDOWN	Low power, is shutting down!	电量低,即将关机！	電量低，即將關機！	Низкое энергопотребление, вскоре будет закрыта!	낮은 전력 소비는 곧 종료됩니다!	低消費電力は、すぐにシャットダウンします！		
+LANG_LABEL_10S_SHUTDOWN	10s after shutdown!	10s后关机！	10s後關機！	10 с после выключения!	종료 후 10 초!	シャットダウン後10S！		
+LANG_LABEL_SHUTDOWN_NOW	Is shutting down!	即将关机！	即將關機！	Предстоящие отключения!	곧 종료!	今後のシャットダウン！		
+LANG_LABEL_30S_NOWORK_SHUTDOWN	The 5S doesn't work will automatically shut down	5S内不工作将自动关机	5S內不工作將自動關機	5S не работает автоматически отключаетсяв	5S는 자동으로 내에서 종료됩니다 작동하지 않습니다	5Sは自動的以内にシャットダウンします動作していない		
+LANG_LABEL_PLAYBACK_FAIL	The failure of video playback!	视频播放失败！	視頻播放失敗！	Воспроизведение видео не удалось!	동영상 재생에 실패했습니다!	ビデオの再生に失敗しました！		
+LANG_LABEL_FILELIST_EMPTY	The file list is empty!	文件列表为空！	文件列表爲空！	Список файлов пуст!	파일 목록이 비어 있습니다!	ファイルリストは空です！		
+LANG_LABEL_SOS_WARNING	SOS recorded	SOS记录发生	SOS記錄發生	SOS запись произошло	SOS 레코드가 발생했습니다	SOSレコードが発生しました		
+LANG_LABEL_WIFI_CONNECT	Wifi connect success	Wifi连接成功	Wifi連接成功	Wi-Fi соединение успешно	와이파이 연결에 성공	WiFi接続は成功です		
+LANG_LABEL_IMPACT_NUM	Each time of collision	每次碰撞时间	每次碰撞時間	Каждый раз, когда столкновение	각각의 충돌 시간	各衝突時間		
+LANG_LABEL_OTA_UPDATE	Being upgraded, do not power off and operate the machine (takes about two minutes).	正在升级，切勿断电和操作机器(耗时大约两分钟)。	正在升級，切勿斷電和操作機器(耗時大約兩分鐘)。	Модернизируется, не выключить,а управлять машиной (которая занимает около двух минут).	업그레이드 (약 2 분 소요) 기계의 전원을 끄고 작동하지 않습니다.	アップグレードされて、電源をオフにして（約2分かかります）機械を操作しないでください。		
+LANG_LABEL_TAKE_PICTURE	Save takepicture...	正在保存拍照图片...	正在保存拍照圖片	сохранение  фото	저장 중, 사진, 그림	撮影画像を保存している		
+LANG_LABEL_FORMAT_SDCARD	SD card file system format does not meet the requirements, do you want to format?	SD卡文件系统格式不符合要求，是否格式化？	SD卡文件系統格式不符合要求，是否格式化？	формат файлов sd системы  нетре,если формат?	SD卡 파일 시스템 형식 부합하지 요구 여부를 포맷?	ファイルフォーマットSDカードシステム要求に合わないかどうか、フォーマット？		
+LANG_LABEL_FILE_LOCKED	File is locked, prohibited deleted!	文件已加锁，禁止删除！	文件已加鎖，禁止刪除！	Файл заблокирован, запретил удалены!	파일 잠금, 삭제 금지되어 있습니다!	ファイルは、ロックされ、削除禁止されています！		
+LANG_LABEL_LOCKED_FILE	File is locked!	文件已加锁！	文件已加鎖！	Файл заблокирован!	파일이 잠겨 있습니다!	ファイルがロックされています！		
+LANG_LABEL_UNLOCK_FILE	File is unlocked!	文件已解锁！	文件已解鎖！	Файл разблокирован!	파일 잠금 해제!	ファイルのロックが解除さ！		
+LANG_LABEL_LICENSE_PLATE_NUMBERS_CN	京湘津鄂沪粤渝琼冀川晋贵辽云吉陕黑甘苏青浙台皖藏闽蒙赣桂鲁宁豫新港澳	京湘津鄂沪粤渝琼冀川晋贵辽云吉陕黑甘苏青浙台皖藏闽蒙赣桂鲁宁豫新港澳	京湘津鄂沪粤渝琼冀川晋贵辽云吉陕黑甘苏青浙台皖藏闽蒙赣桂鲁宁豫新港澳	京湘津鄂沪粤渝琼冀川晋贵辽云吉陕黑甘苏青浙台皖藏闽蒙赣桂鲁宁豫新港澳	京湘津鄂沪粤渝琼冀川晋贵辽云吉陕黑甘苏青浙台皖藏闽蒙赣桂鲁宁豫新港澳	京湘津鄂沪粤渝琼冀川晋贵辽云吉陕黑甘苏青浙台皖藏闽蒙赣桂鲁宁豫新港澳		
+LANG_LABEL_LICENSE_PLATE_NUMBERS_EN	1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ	1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ	1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ	1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ	1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ	1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ		

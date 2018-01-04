@@ -1,0 +1,3 @@
+1. add debug info(db_xxx) and state update(write "D[RTC] close fifo")(comment).
+
+2. the time of open fifo is controlled by core which sleep xx seconds, here NOT done

@@ -1,0 +1,13 @@
+# Android fstab file.
+#<src>                                                  <mnt_point>         <type>    <mnt_flags and options>                               <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+
+
+#/dev/block/by-name/system	/system             ext4      ro                                            	wait
+#/dev/block/by-name/cache	/cache              ext4      noatime,nosuid,nodev,nomblk_io_submit,barrier=1	wait,check
+#/dev/block/by-name/databk	/databk             ext4      noatime,nosuid,nodev,nomblk_io_submit,barrier=1	wait,check
+#/dev/block/by-name/UDISK	/data		    	ext4      noatime,nosuid,nodev,nomblk_io_submit,barrier=1,noauto_da_alloc	wait,check,encryptable=/dev/block/by-name/databk
+#/dev/block/nande	        /data               ext4      noatime,nosuid,nodev,nomblk_io_submit,barrier=1,noauto_da_alloc	wait,check
+

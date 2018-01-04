@@ -1,0 +1,3 @@
+ver1. delete verbose such as class app_config, record...
+
+ver2. change display scale(160*40) (test)

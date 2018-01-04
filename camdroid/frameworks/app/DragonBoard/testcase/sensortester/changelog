@@ -1,0 +1,1 @@
+1. add debug info(db_xxx) and current state info update(result = 'M' -- malloc fail)

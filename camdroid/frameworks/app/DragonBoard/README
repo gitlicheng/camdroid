@@ -1,0 +1,61 @@
+1. it can automaticly recognize V3(with UVC) or A20(with UVC or TVIN), so there's no need for you to configure UVC or TVIN on platform A20-machine
+
+2. HOW TO CONFIGURE THE TESTER?
+   if you want to test other device, such as KEY, TF, SPK(speaker), mic, rtc, acc(g-sensor), for example, you want to display TF-card tester and cancel RTC display on LCD
+   there's TWO ways to configure:
+   method 1: write "dragonboard.cfg" and put the FILE in TF-card by path of "DragonBoard/dragonboard.cfg".
+             After you read "dragonboard.cfg" in DIR of "inc", you will know how to write "dragonboard.cfg", I have write it with the easiest way.
+             Make sure the TF card is in plugged-in status when the machine powers on, because the program will read "dragonboard.cfg" to decide which device to test.
+             If FILE "dragonboard.cfg" doesn't exist in TF-card when machine powers on, the program open all the tester by default!!!
+   method 2: do NOT do the method 1, open file "core/dragonboard.cpp" and set or reset global variables "testKey", "testTf", "testRtc" and so on.
+             for example, if you want to test "rtc" and do NOT want to test "acc", you set it with: "int testRtc = 1; int testAcc = 0;", the vars testRtcPath[40] and testAccPath[40] you don't care for it.
+
+3. if you want to compile dragonboard of V3, there must be a file "testcase/wifitester/CamdLinux.mk"
+   if you want to compile dragonboard of A20, you need rename the file "test...mk" to other name or delete it.
+
+4. source code tree:
+   DragonBoard
+        |
+        |---CamLinux.mk
+        |
+        |---core
+        |   |---CamLinux.mk
+        |   |---changelog
+        |   \---dragonboard.cpp
+        |
+        |---inc
+        |   |---CamLinux.mk
+        |   |---dragonboard.cfg
+        |   |---dragonboard.h
+        |   \---parser.c(NOT compile)
+        |
+        |---README
+        |
+        \---testcase
+            |---CamLinux.mk
+            |---ddrtester
+            |   |---CamLinux.mk
+            |   \---ddrtester.c
+            |---mictester
+            |   |---CamLinux.mk
+            |   \---mictester.c
+            |---nortester
+            |   |---CamLinux.mk
+            |   \---nortester.c
+            |---rtctester
+            |   |---CamLinux.mk
+            |   \---rtctester.c
+            |---sensortester
+            |   |---CamLinux.mk
+            |   \---sensortester.c
+            |---tftester
+            |   |---CamLinux.mk
+            |   \---tftester.c
+            |---videotester
+            |   |---CamLinux.mk
+            |   \---videotester.c(NOT compile)
+            \---wifitester
+                |---CamLinux.mk
+                \---wifitester.c
+
+5. if you have other questions about dragonboard, send email to <zhangjingzhou@allwinnertech.com>

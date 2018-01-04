@@ -1,0 +1,29 @@
+#ifndef _KEY_EVENT_H
+#define _KEY_EVENT_H
+
+#include <minigui/window.h>
+
+#define MSG_CDR_KEY (MSG_USER + 500)
+
+#define CDR_KEY_LEFT	SCANCODE_SUNXILEFT	//0x80
+#define CDR_KEY_RIGHT	SCANCODE_SUNXIRIGHT	//0x81
+#define CDR_KEY_MODE	SCANCODE_SUNXIMODE	//0x82
+#define CDR_KEY_OK		SCANCODE_SUNXIOK	//0x83
+#define CDR_KEY_POWER	SCANCODE_SUNXIPOWER	//0x84
+#define CDR_KEY_MENU	SCANCODE_SUNXIMENU	//0x85
+
+#define LONG_PRESS_TIME 50 /* unit:10ms */
+#define LOWPOWER_SHUTDOWN_TIME (10) /* unit: s */
+#define NOWORK_SHUTDOWN_TIME (10)
+#define NOWORK_SHUTDOWN_TIME2 (5)
+#define KEY_CNT 5
+
+/* KEY MACRO */
+enum {
+	SHORT_PRESS = 0,
+	LONG_PRESS
+};
+
+#endif
+
+

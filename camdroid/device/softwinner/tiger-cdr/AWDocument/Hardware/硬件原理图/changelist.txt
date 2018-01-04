@@ -1,0 +1,118 @@
+===========================2015-02-05==========================================
+v3s_cdr_std_v0_2
+1  05 CPU
+   1) C71，C70电容上 增加SVREF网络
+2  07 CAMERA
+    1) 增加AR0330 SENSOR的支持；供电增加一路LDO。
+    2) 更改MIPI-CSI-RESET网络的电平转换电路。
+3 08 12 RGBLCD
+    1)LCD在PE口，VCC-LCD网络连接到VCC-PE网络上。
+4 10 Speaker/Microphone
+    1)耳机座子端HPCOM网络上增加RC滤波网络。
+
+===========================2015-02-07==========================================
+v3s_cdr_std_v0_4
+1  06 POWER
+   1)增加PMU上IRQ功能的网络。
+   2）修改VCC-EPHY网络错误。
+
+v3s_cdr_std_v0_5
+1  05 CPU
+   1) VCC-EPHY网络从EPHY-RTC管脚改为EPHY-VCC管脚。
+   2) CPU的PIN124脚的网络名更改为“HPCOMFB”。
+   3) C150相连的Power网络名名由VCC-PLL更改为HPVCC。
+   4) C2更改为NC。
+   5) R13的精度要求去掉。
+
+==========================2015-02-12==========================================
+v3s_cdr_std_v0_6
+1  05 CPU
+   1) 删除C2/C99/C123/C124。
+2  06 POWER
+   1)PMU上IRQ网络增加防倒灌二极管。
+   2)R7修改为200k，DDR2供电电压为1.8V。
+3  07 CAMERA
+   1)AR0330 DVDD供电，R1修改为13.7K，R2修改为11K。
+   2)JX-H22 PE和IOVCC供电，修改为3V，由AP2125提供。
+   3)C219容值修改为1uF。
+4  09 CARD
+   1)SD卡CLK信号线加33R串联电阻。
+5  11 USB
+   1)使用5V给后拉摄像头供电时，加入限流开关。
+
+===========================2015-03-11==========================================
+v3s_cdr_std_v0_7
+1  05 CPU
+   1) DRAM bypass电容C77/C12/C78默认不贴。
+   2) SYS bypass电容C127/C134默认不贴。
+   3) HPCOMFB在主控端加1uF电容到A-GND。
+   4) 24M晶振MOUT端的0R电阻删除。
+   5) Camera的I2C SCK和SDA反接。
+2  06 POWER
+   1) 将AXP209更换为AXP203，修改如下项为：LDO3和LDO4修改为默认不开，充电电流默认值修改为500mA。
+   2) PMU的DCDC2和DCDC3的滤高频小电容删除。
+   3) LDO4输出端加上4.7uF电容。
+3  07 CAMERA
+   1) Camera的DVDD供电由LDO4提供。
+4  08 LCD
+   1) LCD-CS接地电容修改为NC。
+4  10 AUDIO
+   1) 耳机电路修改为OPTION，HPR/HPL输入端RC到地电路保留。
+5  11 USB
+   1) 后拉USB供电电路默认贴上转5V DCDC电路。
+
+===========================2015-03-12==========================================
+v3s_cdr_std_v0_7
+1  05 CPU
+   1) HPCOMFB在主控端1uF电容删除。
+   2) 增加AGND网络名称。
+2  06 POWER
+   1) 将框图中的AXP209更换为AXP203。
+   2) LDO3和LDO24使用DCDC3作为输入。
+   3) 将GPIO0~3引出，GPIO1作为录像状态指示灯。
+   4) 将CHGLED引出，作为充电指示灯。
+   5) 将IRQ到VCC-IO的防倒灌二极管挪到PMU端。
+3  07 CAMERA
+   1) Camera的AVDD和DVDD供电的磁珠删除。
+   2) JX-H22 IOVCC供电与DVDD供电共用3V。
+   3) AR0330 MIPI-IOVCC外挂LDO使用DCDC3使能。
+4  10 AUDIO
+   1) 耳机电路，HPR/HPL输入端RC到地电路删除（与speak处的RC到地电路重复）。
+5  12 LCD
+   1) LCD-CS到主控端的连接删除。
+
+===========================2015-05-05==========================================
+v3s_cdr_std_v0_8
+1  04 GPIO ASSIGNMENT
+   1) 增加GPIO功能号。
+2  05 CPU
+   1) 串口RX加上串联1K电阻。
+3  06 POWER
+   1) 将GPIO0~3引出，GPIO1作为录像状态指示灯。
+   2) 将CHGLED引出，作为充电指示灯。
+   3) 将IRQ到VCC-IO的防倒灌二极管挪到PMU端。
+   4) 将VIN3和LDO24输入分开。
+4  07 Camera
+   1) AR0330 IOVCC供电增加到LDO3的可选电路。
+5  10 AUDIO
+   1) 增加GPS可选耳机接口。
+6  12 Gsensor
+   1) Gsensor电路修改为默认使用DA380，BMA250删除。
+   2) DA380电路优化，去掉三极管反向电路，GND_D网络名称修改为GND。
+
+===========================2015-05-07==========================================
+v3s_cdr_std_v0_9
+1  05 CPU
+   1) SDC0-CLK主控端的网络名称修改为SDC0-CLK0。
+   2) GS-INT网络名称修改为PG2。
+2  06 POWER
+   1) 将GPIO0~3引出，GPIO1作为录像状态指示灯。
+   2) 更换过压防护器件为WS3202K。
+   3) 删除DC座子输入的ESD器件。
+3  07 Camera
+   1) 摄像头的IOVDD和VCC-LCD使用外挂LDO供电。
+   2) 外挂LDO电源输入使用DCDC3，使能脚串联10K电阻。
+4  09 Nor
+   1) SPI-HOLD上拉电阻R64删除。
+5  10 AUDIO
+   1) 耳机电路删除后，增加HPCOMFB 1uF到地电容。

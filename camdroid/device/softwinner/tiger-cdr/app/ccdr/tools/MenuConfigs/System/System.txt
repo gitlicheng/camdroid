@@ -1,0 +1,31 @@
+# 第一列： 菜单在程序中的名称
+# 第二列： 是否有子菜单 
+#			have sub menu: 有子菜单，	no sub menu： 没有子菜单
+# 第三列： 是否有check box: 
+#			have check box: 有子菜单，	no check box: 没有子菜单
+# 第四列： value是否需要显示字符串（一般用来显示子菜单当前的选项）
+#			have value string:			value1 不需要显示字符串
+#			not have value string:		value1 需要显示字符串
+# ----------------------------------------------------------------------
+# | Item Image |	Item String		|	value1		|	value2		   |
+# ----------------------------------------------------------------------
+# value1 可以显示图片也可以显示字符串
+# value2 用来显示图片
+[menu]
+PARK,			have sub menu,		no check box,		have value string
+GSENSOR,		have sub menu,		no check box,		have value string
+RECORD_SOUND,	no sub menu,		have check box,		no value string
+VOICEVOL,		have sub menu,		no check box,		have value string
+KEYTONE,		no sub menu,		have check box,		no value string
+LIGHT_FREQ,		have sub menu,		no check box,		have value string
+TFCARD_INFO,	no sub menu,		no check box,		no value string
+DELAY_SHUTDOWN,	have sub menu,		no check box,		have value string
+FORMAT,			no sub menu,		no check box,		no value string
+LANG,			have sub menu,		no check box,		have value string
+DATE,			no sub menu,		no check box,		no value string
+SS,				have sub menu,		no check box,		have value string
+FIRMWARE,		no sub menu,		no check box,		have value string
+STANDBY_MODE,	no sub menu,		have check box,		no value string
+FRESET,			no sub menu,		no check box,		no value string
+WIFI,			no sub menu,		have check box,		no value string
+ALIGNLINE,		no sub menu,        have check box,     no value string

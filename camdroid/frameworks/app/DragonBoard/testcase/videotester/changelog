@@ -1,0 +1,7 @@
+ver1. delete verbose such as class app_config, record...
+
+ver3. change display scale(160*40) (test)
+
+v1&v2&v3: test videos is OK or not, not as a testcase to communication with dragonboard
+
+In dragonboard, videos display is a thread(startVideoThread())

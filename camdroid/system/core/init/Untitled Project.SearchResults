@@ -1,0 +1,25 @@
+---- console Matches (26 in 4 files) ----
+Fb.h:	__u32 console;
+Fb.h:/*      CONSOLE-SPECIFIC: get console to framebuffer mapping */
+Fb.h:/*      CONSOLE-SPECIFIC: set console to framebuffer mapping */
+Fb.h:/*      Unbind from the console if possible */
+Fb.h:/*      CONSOLE-SPECIFIC: remap all consoles to new fb - for vga switcheroo */
+Fb.h: * LOCKING NOTE: those functions must _ALL_ be called with the console
+Fb.h: * into a debug state (e.g. flipping to the kernel console) and restoring
+Fb.h: * keep track of the initial console (if applicable) and may need to
+Fb.h:	/* called at KDB enter and leave time to prepare the console */
+Fb.h: * is that it introduces unwanted delays to every console switch if set_par
+Fb.h: * framebuffer console.
+Fb.h:/* report to the VT layer that this fb driver can accept forced console
+Init.c:static char console[32];
+Init.c:static char *console_name = "/dev/console";
+Init.c:        ERROR("service '%s' requires console\n", svc->name);
+Init.c:    if (console[0]) {
+Init.c:        snprintf(tmp, sizeof(tmp), "/dev/%s", console);
+Init.c:	ERROR("1debug console name %s\n",console); // richard debug
+Init.c:	ERROR("2debug console name %s\n",console_name); // richard debug
+Init.c:            "\n"  // console is 40 cols x 30 lines
+Init.c:    pval = property_get("ro.boot.console");
+Init.c:        strlcpy(console, pval, sizeof(console));
+Init.h:#define SVC_CONSOLE     0x10  /* requires console */
+Keywords.h:    KEYWORD(console,     OPTION,  0, 0)

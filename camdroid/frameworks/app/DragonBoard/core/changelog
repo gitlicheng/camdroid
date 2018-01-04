@@ -1,0 +1,42 @@
+============================================================================================================================================================================================================================================
+1. add nor and ddr testcase thread, but it doesn't do anything but send "pass"
+
+2. change to cpp file and add videotester
+
+3. parser hasn't been added to display contents what the board has(2015-01-04)
+
+4. add parser, and adjust all kinds of testcase(except keytester) to DIR testcase(2015-01-05)
+
+5. modify printf-level to display all kinds of information(open_success-db_msg, open_fail-db_warn, device_data-db_debug, other-db_verb)
+
+6. close fifo's read-endian as long as receive fail signal('F') except for tftester(because it is removable)
+
+7. add parser to display content according to dragonboard.cfg
+
+8. add sleep(1) after read fifo in xxThreadRead(), set height of lcd_r/g/b changable, but video's height unchangable
+
+9. xxThreadRead() do NOT exit except micThreadRead() and spkThreadRead() because mictester will exit soon
+
+10. modify ConfigureParser(), for len of tester-name, such as [TF] = x, to read digit 'x', use other ways, so [name]    =   xyz can work well, testName = atoi(&x)
+
+11. rename testSensor(video) to testVideo to avoid confuse with g-sensor(rename to testAcc)
+
+12. copy testcase to / if they are keep in tf to avoid program stop when plug out the tf card, but dragonboard was in Tf, Tf card can NOT be detect
+
+13. tfThreadRead() must sleep for a while, can NOT be 1s!!! here sleep 200ms, it must be the same with value in tftest.c, if not, a endian of fifo will wait the other endian, but read-endian can be shorter than write-endian
+
+14. dragonboard may cash when startVideoTester() crash
+
+15. wifi is not exist in A20, so detect it in ConfigureParser() by resolution, it works well now(2015-01-09), but it maybe a bug in the future 
+
+16. when power on, firstly read /mnt/extsd/DragonBoard/dragonboard.cfg(in TF card) to display which testcase when TESTNAME = 1, but if the file maybe not exist, so start all the testcase by default; secondly copy all the testcase to / to avoid dragonboard stop when tf card is plugged out, then start this testcase; thirdly if testcase not exist in tf card, also start /system/bin/testcase. So look testcase in TF as first startup item to easy debug, look /system/bin/testcase the second backup startup item. So clever I was! haha!!!
+
+17. set dragonboard as the last startup item of system, it won't print any information, but it will print if is started it by hand. So need use android debug tools
+
+18. there's still another work to detect whether the back video is UVC or TVIN on A20 platform(2015-01-09)
+
+19. solve the problem of detect UVC or TVIN by read node "/dev/video2"(UVC), now it can works in V3(by UVC) and A20(by UVC or TVIN) automaticly, it maybe the END of DragonBoard(2015-01-12)
+
+20. rtctester send string with real time, dragonboard just read fifo and display, acctester hasn't do like this and I want leave it to the next version(2015-01-13)
+------------------DragonBoard(V0.0.1) END--------------------
+============================================================================================================================================================================================================================================

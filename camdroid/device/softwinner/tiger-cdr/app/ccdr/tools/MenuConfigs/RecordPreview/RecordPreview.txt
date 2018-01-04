@@ -1,0 +1,25 @@
+# 第一列： 菜单在程序中的名称
+# 第二列： 是否有子菜单 
+#			have sub menu: 有子菜单，	no sub menu： 没有子菜单
+# 第三列： 是否有check box: 
+#			have check box: 有子菜单，	no check box: 没有子菜单
+# 第四列： value是否需要显示字符串（一般用来显示子菜单当前的选项）
+#			have value string:			value1 不需要显示字符串
+#			not have value string:		value1 需要显示字符串
+# ----------------------------------------------------------------------
+# | Item Image |	Item String		|	value1		|	value2		   |
+# ----------------------------------------------------------------------
+# value1 可以显示图片也可以显示字符串
+# value2 用来显示图片
+[menu]
+VIDEO_RESOLUTION,	have sub menu,		no check box,		have value string
+VIDEO_BITRATE,		have sub menu,		no check box,		have value string
+VTL,		have sub menu,		no check box,		have value string
+WB,			have sub menu,		no check box,		have value string
+CONTRAST,	have sub menu,		no check box,		have value string
+EXPOSURE,	have sub menu,		no check box,		have value string
+POR,		no sub menu,		have check box,		no value string
+TWM,		no sub menu,		have check box,		no value string
+AWMD,		no sub menu,		have check box,		no value string
+LICENSE_PLATE_WM,	no sub menu,		no check box,		no value string
+SMARTALGORITHM,		no sub menu,		have check box,		no value string

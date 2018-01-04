@@ -1,0 +1,129 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+import /init.${ro.hardware}.rc
+
+on early-init
+    # Set init and its forked children's oom_adj.
+    start ueventd
+
+on early-fs
+
+# create mountpoints
+    mkdir /mnt 0775 root root
+    mkdir /mnt/sdcard 0755 root root
+    mkdir /mnt/extsd 0755 root root
+	
+on init
+	
+sysclktz 0
+
+loglevel 6
+
+# setup the global environment
+    export PATH /sbin:/system/bin:/system/xbin
+    export LD_LIBRARY_PATH /system/lib
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+
+# Backward compatibility
+    symlink /system/etc /etc
+    symlink /sys/kernel/debug /d
+
+# Right now vendor lives on the same filesystem as system,
+# but someday that may change.
+    symlink /system/vendor /vendor
+
+    mkdir /system 0777 root root
+    mkdir /data 0777 root root
+    mkdir /data/camera 0777 root root
+    mkdir /system/etc/hawkview 0777 root root
+
+on fs
+# mount mtd partitions
+# Mount /system rw first to give the filesystem a chance to save a checkpoint
+    wait /dev/block/mtdblock2
+    setupfs /dev/block/mtdblock2
+    mount squashfs /dev/block/mtdblock2 /system
+	
+    wait /dev/block/mtdblock3
+    mount jffs2 /dev/block/mtdblock3 /data
+	
+on post-fs
+   mount rootfs rootfs / shared rec
+
+
+on post-fs-data
+    # We chown/chmod /data again so because mount is run as root + defaults
+    chown compass compass /data
+    chmod 0771 /data
+    chmod 0771 /data/camera
+    mkdir /data/property 0700 root root
+    # We restorecon /data in case the userdata partition has been reset.
+    restorecon /data
+    mkdir /data/misc 01771 system misc	
+    mkdir /data/local 0751 root root
+
+on boot
+#   basic network init
+    ifup lo
+    hostname localhost
+    domainname localdomain
+
+# set RLIMIT_NICE to allow priorities from 19 to -20
+    setrlimit 13 40 40
+
+# Memory management.  Basic kernel parameters, and allow the high
+# level system server to be able to adjust the kernel OOM driver
+# parameters to match how it is managing things.
+
+    chown root radio /proc/cmdline
+
+    class_start core
+    class_start main
+
+on nonencrypted
+    class_start late_start
+
+## Daemon processes to be run by init.
+##
+service ueventd /sbin/ueventd
+    class core
+    critical
+
+	
+service console /system/bin/sh
+    class core
+    disabled
+    console
+    user root
+    group log
+	
+on property:ro.debuggable=1
+    start console
+
+service servicemanager /system/bin/servicemanager
+    class core
+    user system
+    group system
+    critical
+
+# adbd is controlled via property triggers in init.<platform>.usb.rc
+
+service vold /system/bin/vold
+    class core
+    socket vold stream 0660 root mount
+    ioprio be 2
+
+service debuggerd /system/bin/debuggerd
+    class main
+    disabled
+	
+service media  /system/bin/mediaserver
+    class core
+    root media
+    group audio camera  drmrpc mediadrm
+    ioprio rt 4
