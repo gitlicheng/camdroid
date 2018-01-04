@@ -8,7 +8,7 @@ on post-fs-data
 	insmod /system/vendor/modules/cci.ko
 	insmod /system/vendor/modules/vfe_os.ko
 	insmod /system/vendor/modules/vfe_subdev.ko
-	insmod /system/vendor/modules/h22_mipi.ko
+	insmod /system/vendor/modules/ar0330_mipi.ko
 	insmod /system/vendor/modules/vfe_v4l2.ko
 	# uvc sensor
 	insmod /system/vendor/modules/uvcvideo.ko

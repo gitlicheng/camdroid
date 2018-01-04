@@ -54,8 +54,8 @@ typedef enum {
 	}VideoSize_t_csi;
 
 	/* Preview Size */
-	#define PREVIEW_W_csi 320
-	#define PREVIEW_H_csi 480
+	#define PREVIEW_W_csi 480
+	#define PREVIEW_H_csi 272
 
 	/* FrameRate */
 	#define FRONT_CAM_FRAMERATE 30

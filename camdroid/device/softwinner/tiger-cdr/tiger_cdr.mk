@@ -51,7 +51,7 @@ PRODUCT_COPY_FILES += \
 	device/softwinner/tiger-cdr/modules/modules/cci.ko:/system/vendor/modules/cci.ko \
 	device/softwinner/tiger-cdr/modules/modules/vfe_os.ko:/system/vendor/modules/vfe_os.ko \
 	device/softwinner/tiger-cdr/modules/modules/vfe_subdev.ko:/system/vendor/modules/vfe_subdev.ko \
-	device/softwinner/tiger-cdr/modules/modules/h22_mipi.ko:/system/vendor/modules/h22_mipi.ko \
+	device/softwinner/tiger-cdr/modules/modules/ar0330_mipi.ko:/system/vendor/modules/ar0330_mipi.ko \
 	device/softwinner/tiger-cdr/modules/modules/vfe_v4l2.ko:/system/vendor/modules/vfe_v4l2.ko \
 	device/softwinner/tiger-cdr/modules/modules/da380.ko:/system/vendor/modules/da380.ko \
 	device/softwinner/tiger-cdr/modules/modules/sw-device.ko:/system/vendor/modules/sw-device.ko \
