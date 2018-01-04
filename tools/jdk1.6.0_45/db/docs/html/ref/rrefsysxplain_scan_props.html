@@ -1,0 +1,401 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="copyright" content="(C) Copyright 2005" />
+<meta name="DC.rights.owner" content="(C) Copyright 2005" />
+<meta content="public" name="security" />
+<meta content="index,follow" name="Robots" />
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<meta content="reference" name="DC.Type" />
+<meta name="DC.Title" content="SYSXPLAIN_SCAN_PROPS system table" />
+<meta scheme="URI" name="DC.Relation" content="rref_xplain_tables.html" />
+<meta content="XHTML" name="DC.Format" />
+<meta content="rrefsysxplain_scan_props" name="DC.Identifier" />
+<meta content="en-us" name="DC.Language" />
+<link href="commonltr.css" type="text/css" rel="stylesheet" />
+<title>SYSXPLAIN_SCAN_PROPS system table</title>
+</head>
+<body id="rrefsysxplain_scan_props"><a name="rrefsysxplain_scan_props"><!-- --></a>
+
+
+<h1 class="topictitle1">SYSXPLAIN_SCAN_PROPS system table</h1>
+
+<div>
+    <div class="section"><p>This table captures information about table/index access
+            which occurred during statements that were
+            executed using RUNTIMESTATISTICS with XPLAIN style (see the
+            RUNTIMESTATISTICS section in the
+            <span><em>Java DB Reference Manual</em></span> for more information
+            on how to configure this).
+            Each row in this table describes a single table/index scan for
+            a particular result set used by a particular statement. Rows
+            in this table are typically joined with rows in
+            SYSXPLAIN_STATEMENTS and SYSXPLAIN_RESULTSETS during analysis:</p>
+
+        <pre>
+             select st.stmt_text, sp.no_visited_rows 
+               from my_stats.sysxplain_scan_props sp, 
+                    my_stats.sysxplain_resultsets rs, 
+                    my_stats.sysxplain_statements st 
+               where st.stmt_id = rs.stmt_id and 
+                    rs.scan_rs_id = sp.scan_rs_id and 
+                    rs.op_identifier = 'TABLESCAN' and 
+                    sp.scan_object_name = 'COUNTRIES'
+         </pre>
+
+            <p>Rows in this table are added
+                automatically when 
+                <span>Derby</span>
+                has been configured appropriately. The
+            rows remain in the table until you delete them or drop the table.
+                </p>
+
+    <p>
+            See "Working with RunTimeStatistics" in the 
+            <span><em>Tuning Java DB</em></span>
+            for additional information.
+            </p>
+
+                <div class="p">   
+<div class="tablenoborder"><table summary="" cellspacing="0" cellpadding="4" width="100%" frame="border" border="1" rules="all">
+
+<thead align="left">
+<tr>
+<th align="left" valign="bottom" width="23.762376237623762%" id="N10091">Column Name</th>
+
+<th align="left" valign="bottom" width="22.772277227722775%" id="N1009A">Type</th>
+
+<th align="left" valign="bottom" width="10.891089108910892%" id="N100A3">Length</th>
+
+<th align="left" valign="bottom" width="13.861386138613863%" id="N100AC">Nullability</th>
+
+<th align="left" valign="bottom" width="28.71287128712871%" id="N100B5">Contents</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">SCAN_RS_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">36</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">A unique identifer for this particular row. Referenced
+by the foreign key SCAN_RS_ID in SYSXPLAIN_RESULTSETS</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">SCAN_OBJECT_NAME</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">128</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">The name of the object being scanned. If this is a
+    scan of a table or index, the table name or index name appears here.
+    If this is a scan of the internal index created for a constraint, the
+    constraint name appears here.
+    For complex join queries, the object being scanned may be an intermediate
+    result, in which case a description such as 'Temporary HashTable' appears.
+</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">SCAN_OBJECT_TYPE</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">1</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">A code indicating the type of object being scanned.
+Codes include 'T' for Table, 'I' for Index, and 'C' for Constraint.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">SCAN_TYPE</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">8</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">The type of scan being performed. Scan types include
+'HEAP', 'BTREE', and 'SORT'.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">ISOLATION_LEVEL</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">6</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">The isolation level being used for this scan.
+    Isolation levels are identified by a code: 'RU' for Read Uncommitted,
+    'RC' for Read Committed, 'RR' for Repeatable Read,
+    and 'SE' for Serializable.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">NO_VISITED_PAGES</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">Number of database pages that this scan touched.
+For btree scans this number only includes the leaf pages visited.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">NO_VISITED_ROWS</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">Number of database rows that were examined by this scan.
+    This number includes all rows, including those rows marked deleted,
+    those rows that don't meet qualification, and those rows which were
+returned by the scan.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">NO_QUALIFIED_ROWS</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">Number of rows that satisfied the qualifiers for this scan.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">NO_VISITED_DELETED_ROWS</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">Number of the database rows that were examined by this
+scan which were found to be rows that were marked deleted.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">NO_FETCHED_COLUMNS</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">Number of columns that were fetched from each qualifying row.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">BITSET_OF_FETCHED_COLUMNS</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">512</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">Description of the columns which were fetched from each qualifying row.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">BTREE_HEIGHT</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">For a scan of type BTREE, this column holds the height
+    of the BTREE index. The typical height of a BTREE is 2-4; BTREE heights
+    larger than this should only be seen with very large indexes. A tree
+    with one page has a height of 1. Total number of pages visited in a
+    scan of a BTREE should be (BTREE_HEIGHT - 1 + NO_VISITED_PAGES). For an
+    extremely small BTREE, the btree height may be negative (-1).
+    For other types of scans, this column is NULL.
+</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">FETCH_SIZE</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">I think this is the number of pages fetched at a time
+    when the scan is retrieving pages from disk? I expected this to be 16
+    when doing a TABLESCAN, and 1 when doing an INDEXSCAN, but I've also seen
+it be 16 for INDEXSCAN?</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">START_POSITION</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">1024</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">For index and constraint scans, this column holds a
+    textual representation of the operator, if any, which was used to position
+    the beginning of the index/constraint scan.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">STOP_POSITION</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">1024</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">For index and constraint scans, this column holds a
+    textual representation of the operator, if any, which was used to position
+    the end of the index/constraint scan.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">SCAN_QUALIFIERS</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">1024</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">If the query specified values which are to be used to
+    limit the rows that are scanned, information about those values is
+captured in this column.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">NEXT_QUALIFIERS</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">1024</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">If the query specified values which are to be used to
+limit the rows that are scanned, information about those values is
+captured in this column.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">HASH_KEY_COLUMN_NUMBER</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">1024</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">For hash joins, this column contains information about which column is being used to hash the rows that are joined.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N10091 ">HASH_TABLE_SIZE</td>
+
+<td valign="top" width="22.772277227722775%" headers="N1009A ">INTEGER</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A3 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AC ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B5 ">For hash joins, this column contains information about
+    the size of the hash table that will be used to hold the rows being
+    joined. This hash table is an intermediate result, and will be
+    discarded at the end of the query. If the hash table cannot fit in
+    memory, it will automatically spill over to disk. Since the
+    spillover to disk can have significant performance implications,
+    this value can provide a clue that the hash table was
+    unexpectedly too large to fit in memory.</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="rref_xplain_tables.html" title="">XPLAIN style tables</a></div>
+</div>
+</div>
+
+</body>
+</html>

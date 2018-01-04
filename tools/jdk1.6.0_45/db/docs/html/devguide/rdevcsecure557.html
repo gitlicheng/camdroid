@@ -1,0 +1,153 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="copyright" content="(C) Copyright 2005" />
+<meta name="DC.rights.owner" content="(C) Copyright 2005" />
+<meta content="public" name="security" />
+<meta content="index,follow" name="Robots" />
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<meta content="reference" name="DC.Type" />
+<meta name="DC.Title" content="List of user authentication properties" />
+<meta name="abstract" content="This table summarizes the various properties related to user authentication." />
+<meta name="description" content="This table summarizes the various properties related to user authentication." />
+<meta content="properties, list of, user authentication" name="DC.subject" />
+<meta content="properties, list of, user authentication" name="keywords" />
+<meta scheme="URI" name="DC.Relation" content="cdevcsecure36127.html" />
+<meta scheme="URI" name="DC.Relation" content="cdevcsecure37817.html" />
+<meta scheme="URI" name="DC.Relation" content="cdevcsecure38522.html" />
+<meta scheme="URI" name="DC.Relation" content="cdevcsecure21547.html" />
+<meta scheme="URI" name="DC.Relation" content="cdevcsecure79358.html" />
+<meta scheme="URI" name="DC.Relation" content="cdevcsecure42374.html" />
+<meta content="XHTML" name="DC.Format" />
+<meta content="rdevcsecure557" name="DC.Identifier" />
+<meta content="en-us" name="DC.Language" />
+<link href="commonltr.css" type="text/css" rel="stylesheet" />
+<title>List of user authentication properties</title>
+</head>
+<body id="rdevcsecure557"><a name="rdevcsecure557"><!-- --></a>
+
+
+<h1 class="topictitle1">List of user authentication properties</h1>
+
+
+
+<div><p>This table summarizes the various properties related to user authentication.</p>
+
+
+<div class="tablenoborder"><a name="rdevcsecure557__cdevcsecure27690"><!-- --></a><table summary="" cellspacing="0" cellpadding="4" id="rdevcsecure557__cdevcsecure27690" frame="border" border="1" rules="all"><caption>Table 1. User authentication properties</caption>
+
+<thead align="left">
+<tr>
+<th align="left" valign="bottom" width="54.08163265306123%" id="N10064">Property Name</th>
+
+<th align="left" valign="bottom" width="45.91836734693878%" id="N1006D">Use</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td valign="top" width="54.08163265306123%" headers="N10064 "><em>derby.connection.requireAuthentication</em></td>
+
+<td valign="top" width="45.91836734693878%" headers="N1006D ">Turns on user authentication.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="54.08163265306123%" headers="N10064 "><em>derby.authentication.provider</em></td>
+
+<td valign="top" width="45.91836734693878%" headers="N1006D ">Specifies the kind of user authentication to use.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="54.08163265306123%" headers="N10064 "><em>derby.authentication.server</em></td>
+
+<td valign="top" width="45.91836734693878%" headers="N1006D ">For LDAP user authentication, specifies the location of
+the server.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="54.08163265306123%" headers="N10064 "><em>derby.authentication.ldap.searchAuthDN, derby.authentication.ldap.searchAuthPW,
+derby.authentication.ldap.searchFilter,</em> and <em>derby.authentication.ldap.searchBase</em></td>
+
+<td valign="top" width="45.91836734693878%" headers="N1006D ">Configures the way that DN searches are performed.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="54.08163265306123%" headers="N10064 "><em>derby.user.UserName</em></td>
+
+<td valign="top" width="45.91836734693878%" headers="N1006D ">Creates a user name and password for the built-in user
+repository in <span>Derby</span>.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="54.08163265306123%" headers="N10064 "><em>derby.authentication.builtin.algorithm</em></td>
+
+<td valign="top" width="45.91836734693878%" headers="N1006D ">Specifies the message digest algorithm to use to protect the
+passwords that are stored in the database when using built-in
+authentication.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="54.08163265306123%" headers="N10064 "><em>java.naming.*</em></td>
+
+<td valign="top" width="45.91836734693878%" headers="N1006D ">JNDI properties. See Appendix A in the JNDI API reference
+for more information about these properties.</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+<div class="section">
+<div class="p"><div class="important"><span class="importanttitle">Important: </span><span>Derby</span>'s
+built-in authentication mechanism is suitable only for development and testing
+purposes. It is strongly recommended that production systems rely on LDAP or a
+user-defined class for authentication. It is also strongly recommended that
+production systems protect network connections with SSL/TLS.</div>
+</div>
+
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="cdevcsecure42374.html" title="Derby provides support for user authentication. User authentication means that Derby authenticates the name and password for a user before allowing that user access to the system.">Working with user authentication</a></div>
+</div>
+<div class="relconcepts"><strong>Related concepts</strong><br />
+<div><a href="cdevcsecure36127.html" title="To enable user authentication, set the derby.connection.requireAuthentication property to true. Otherwise, Derby does not require a user name and password. You can set this property as a system-wide property or as a database-wide property.">Enabling user authentication</a></div>
+<div><a href="cdevcsecure37817.html" title="Derby provides several ways to define the repository of users and passwords. To specify which of these services to use with your Derby system, set the property derby.authentication.provider to the appropriate value as discussed here.">Defining users</a></div>
+<div><a href="cdevcsecure38522.html" title="A directory service stores names and attributes of those names. A typical use for a directory service is to store user names and passwords for a computer system. Derby uses the Java naming and directory interface (JNDI) to interact with external directory services that can provide authentication of users' names and passwords.">External directory service</a></div>
+<div><a href="cdevcsecure21547.html" title="Derby provides a simple, built-in repository of user names and passwords.">Built-in Derby users</a></div>
+<div><a href="cdevcsecure79358.html" title="This section discusses programming user authentication into applications for use with Derby.">Programming applications for Derby user authentication</a></div>
+</div>
+</div>
+
+</body>
+</html>

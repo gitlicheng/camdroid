@@ -1,0 +1,491 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="copyright" content="(C) Copyright 2005" />
+<meta name="DC.rights.owner" content="(C) Copyright 2005" />
+<meta content="public" name="security" />
+<meta content="index,follow" name="Robots" />
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<meta content="reference" name="DC.Type" />
+<meta name="DC.Title" content="User authentication and authorization client example" />
+<meta name="abstract" content="This example consists of a pair of programs, AuthExampleClient1.java and AuthExampleClient2.java, which show how to turn on, use, and turn off user authentication using Derby's built-in user authentication and user authorization using the client driver." />
+<meta name="description" content="This example consists of a pair of programs, AuthExampleClient1.java and AuthExampleClient2.java, which show how to turn on, use, and turn off user authentication using Derby's built-in user authentication and user authorization using the client driver." />
+<meta scheme="URI" name="DC.Relation" content="rdevcsecure125.html" />
+<meta content="XHTML" name="DC.Format" />
+<meta content="rdevcsecureclientexample" name="DC.Identifier" />
+<meta content="en-us" name="DC.Language" />
+<link href="commonltr.css" type="text/css" rel="stylesheet" />
+<title>User authentication and authorization client example</title>
+</head>
+<body id="rdevcsecureclientexample"><a name="rdevcsecureclientexample"><!-- --></a>
+
+
+<h1 class="topictitle1">User authentication and authorization client example</h1>
+
+
+
+<div><p>This example consists of a pair of programs,
+<samp class="codeph">AuthExampleClient1.java</samp> and
+<samp class="codeph">AuthExampleClient2.java</samp>, which show how to turn on, use, and
+turn off user authentication using
+<span>Derby</span>'s
+built-in user authentication and user authorization using the client
+driver.</p>
+
+<div class="section">
+<div class="important"><span class="importanttitle">Important: </span><span>Derby</span>'s
+built-in authentication mechanism is suitable only for development and testing
+purposes. It is strongly recommended that production systems rely on LDAP or a
+user-defined class for authentication. It is also strongly recommended that
+production systems protect network connections with SSL/TLS.</div>
+
+<p>This example uses one program to set properties and a second program to
+perform database operations. A similar example that uses the embedded
+driver, in
+<a href="rdevcsecure26537.html#rdevcsecure26537">User authentication and authorization embedded example</a>, is a single long
+program. Either example would work equally well in the other format.</p>
+
+<p>See
+<a href="rdevcsecuresqlauthclientex.html#rdevcsecuresqlauthclientex">User authentication and SQL authorization client example</a>
+for an example similar to this one that uses SQL authorization.</p>
+
+<p>The first program, <samp class="codeph">AuthExampleClient1.java</samp>, does the
+following:</p>
+
+<ol>
+<li>Creates a database named <samp class="codeph">authClientDB</samp>, using the client
+driver.</li>
+
+<li>Sets database properties that create users with different levels of access
+(read-only and full access), require authentication, and set the default access
+level to no access.</li>
+
+<li>Closes the connection and shuts down the database.</li>
+
+</ol>
+
+<p>The second program, <samp class="codeph">AuthExampleClient2.java</samp>, does the
+following:</p>
+
+<ol>
+<li>Tries to connect to the database without a username and password, raising
+an exception.</li>
+
+<li>Connects to the database as a user with read-only access; the connection
+succeeds, but an attempt to create a table raises an exception.</li>
+
+<li>Connects to the database as a user with full access; this user can create
+and populate a table.</li>
+
+<li>Removes the table.</li>
+
+<li>Closes the connection and shuts down the database.</li>
+
+</ol>
+
+<p>Make sure that the <samp class="codeph">javac</samp> command is in your path, then
+compile the programs as follows:
+</p>
+
+<p><kbd class="userinput">javac AuthExampleClient1.java</kbd></p>
+
+<p><kbd class="userinput">javac AuthExampleClient2.java</kbd></p>
+
+<p>Before you run the programs, start the
+<span>Derby</span> Network
+Server as described in step 2 of "Activity 4: Create and run a JDBC program
+using the client driver and Network Server" in
+<span><em>Getting Started with Java DB</em></span>. When you run the
+programs, make sure that
+<samp class="codeph">%DERBY_HOME%\lib\derbyclient.jar</samp> (or
+<samp class="codeph">$DERBY_HOME/lib/derbyclient.jar</samp>) is in your classpath. For
+example, you might use the following commands on a Windows system:</p>
+
+<p><kbd class="userinput">java -cp .;%DERBY_HOME%\lib\derbyclient.jar AuthExampleClient1</kbd></p>
+
+<p><kbd class="userinput">java -cp .;%DERBY_HOME%\lib\derbyclient.jar AuthExampleClient2</kbd></p>
+
+</div>
+
+<div class="example"><h4 class="sectiontitle">Source code for <samp class="codeph">AuthExampleClient1.java</samp></h4>
+<pre>import java.sql.*;
+
+public class AuthExampleClient1 {
+
+    public static void main(String[] args) {
+
+        String driver = "org.apache.derby.jdbc.ClientDriver";
+        String dbName="authClientDB";
+        String connectionURL = "jdbc:derby://localhost:1527/" + dbName +
+            ";create=true";
+        Connection conn = null;
+
+        // Load the driver. This code is not needed if you are using 
+        // JDK 6, because in that environment the driver is loaded 
+        // automatically when the application requests a connection.
+        try {
+            Class.forName(driver);
+            System.out.println(driver + " loaded.");
+        } catch (java.lang.ClassNotFoundException ce) {
+            System.err.print("ClassNotFoundException: ");
+            System.err.println(ce.getMessage());
+            System.out.println("\n Make sure your CLASSPATH variable " +
+                "contains %DERBY_HOME%\\lib\\derbyclient.jar " +
+                "(${DERBY_HOME}/lib/derbyclient.jar).\n");
+        } catch (Exception ee) {
+            errorPrintAndExit(ee);
+        }
+
+        // Create and boot the database and set up users, then shut down
+        // the database as one of the users with full access
+        try {
+            System.out.println("Trying to connect to " + connectionURL);
+            conn = DriverManager.getConnection(connectionURL);
+            System.out.println("Connected to database " + connectionURL);
+
+            turnOnBuiltInUsers(conn);
+
+            // Close connection
+            conn.close();
+            System.out.println("Closed connection");
+
+            /* Shut down the database to make static properties take
+             * effect. Because the default connection mode is now 
+             * noAccess, you must specify a user that has access. But
+             * because requireAuthentication does not take effect until
+             * you restart the database, the password is not checked.
+             *
+             * Database shutdown throws the 08006 exception to confirm
+             * success.
+             */
+            try {
+                DriverManager.getConnection(
+                    "jdbc:derby://localhost:1527/" + dbName + 
+                    ";user=sa;password=badpass;shutdown=true");
+            } catch (SQLException se)  {
+                if ( !se.getSQLState().equals("08006") ) {
+                    throw se;
+                }
+            }
+            System.out.println("Database shut down normally");
+        } catch (Throwable e) {
+            errorPrintAndExit(e);
+        }
+    }
+
+    /**
+     * Turn on built-in user authentication and user authorization.
+     *
+     * @param conn a connection to the database.
+     */
+    public static void turnOnBuiltInUsers(Connection conn) 
+            throws SQLException {
+
+        String setProperty = 
+            "CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(";
+        String getProperty = 
+            "VALUES SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(";
+        String requireAuth = "'derby.connection.requireAuthentication'";
+        String defaultConnMode =
+            "'derby.database.defaultConnectionMode'";
+        String fullAccessUsers = "'derby.database.fullAccessUsers'";
+        String readOnlyAccessUsers =
+            "'derby.database.readOnlyAccessUsers'";
+        String provider = "'derby.authentication.provider'";
+        String propertiesOnly = "'derby.database.propertiesOnly'";
+
+        System.out.println("Turning on authentication.");
+        Statement s = conn.createStatement();
+
+        // Set and confirm requireAuthentication
+        s.executeUpdate(setProperty + requireAuth + ", 'true')");
+        ResultSet rs = s.executeQuery(getProperty + requireAuth + ")");
+        rs.next();
+        System.out.println("Value of requireAuthentication is " +
+            rs.getString(1));
+
+        // Set authentication scheme to Derby builtin
+        s.executeUpdate(setProperty + provider + ", 'BUILTIN')");
+
+        // Create some sample users
+        s.executeUpdate(
+            setProperty + "'derby.user.sa', 'ajaxj3x9')");
+        s.executeUpdate(
+            setProperty + "'derby.user.guest', 'java5w6x')");
+        s.executeUpdate(
+            setProperty + "'derby.user.mary', 'little7xylamb')");
+
+        // Define noAccess as default connection mode
+        s.executeUpdate(
+            setProperty + defaultConnMode + ", 'noAccess')");
+
+        // Confirm default connection mode
+        rs = s.executeQuery(getProperty + defaultConnMode + ")");
+        rs.next();
+        System.out.println("Value of defaultConnectionMode is " +
+            rs.getString(1));
+
+        // Define read-write users
+        s.executeUpdate(
+            setProperty + fullAccessUsers + ", 'sa,mary')");
+
+        // Define read-only user
+        s.executeUpdate(
+            setProperty + readOnlyAccessUsers + ", 'guest')");
+
+        // Confirm full-access users
+        rs = s.executeQuery(getProperty + fullAccessUsers + ")");
+        rs.next();
+        System.out.println(
+            "Value of fullAccessUsers is " + rs.getString(1));
+
+        // Confirm read-only users
+        rs = s.executeQuery(getProperty + readOnlyAccessUsers + ")");
+        rs.next();
+        System.out.println(
+            "Value of readOnlyAccessUsers is " + rs.getString(1));
+
+        // We would set the following property to TRUE only when we were
+        // ready to deploy. Setting it to FALSE means that we can always
+        // override using system properties if we accidentally paint
+        // ourselves into a corner.
+        s.executeUpdate("CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(" +
+            "'derby.database.propertiesOnly', 'false')");
+        s.close();
+    }
+
+    /** 
+     * Report exceptions, with special handling of SQLExceptions,
+     * and exit.
+     *
+     * @param e an exception (Throwable)
+     */
+    static void errorPrintAndExit(Throwable e) {
+        if (e instanceof SQLException)
+            SQLExceptionPrint((SQLException)e);
+        else {
+            System.out.println("A non-SQL error occurred.");
+            e.printStackTrace();
+        }
+        System.exit(1);
+    }
+
+    /**
+     * Iterate through a stack of SQLExceptions.
+     *
+     * @param sqle a SQLException
+     */
+    static void SQLExceptionPrint(SQLException sqle) {
+        while (sqle != null) {
+            System.out.println("\n---SQLException Caught---\n");
+            System.out.println("SQLState:   " + (sqle).getSQLState());
+            System.out.println("Severity: " + (sqle).getErrorCode());
+            System.out.println("Message:  " + (sqle).getMessage());
+            sqle = sqle.getNextException();
+        }
+    }
+}</pre>
+</div>
+
+<div class="example"><h4 class="sectiontitle">Source code for <samp class="codeph">AuthExampleClient2.java</samp></h4>
+<pre>import java.sql.*;
+
+public class AuthExampleClient2 {
+
+    public static void main(String[] args) {
+
+        String driver = "org.apache.derby.jdbc.ClientDriver";
+        String dbName="authClientDB";
+        String connectionURL = "jdbc:derby://localhost:1527/" + dbName;
+        Connection conn = null;
+
+        // Restart database and confirm that unauthorized users cannot
+        //  access it
+
+        // Load the driver. This code is not needed if you are using 
+        // JDK 6, because in that environment the driver is loaded 
+        // automatically when the application requests a connection.
+        try {
+            Class.forName(driver);
+            System.out.println(driver + " loaded.");
+        } catch (java.lang.ClassNotFoundException ce) {
+            System.err.print("ClassNotFoundException: ");
+            System.err.println(ce.getMessage());
+            System.out.println("\n Make sure your CLASSPATH variable " +
+                "contains %DERBY_HOME%\\lib\\derbyclient.jar " +
+                "(${DERBY_HOME}/lib/derbyclient.jar). \n");
+        } catch (Exception ee) {
+            errorPrintAndExit(ee);
+        }
+
+        // Try to log in with no username or password
+        try {
+            // connection attempt should fail
+            System.out.println("Trying to connect to " + connectionURL +
+                " without username or password");
+            conn = DriverManager.getConnection(connectionURL);
+            System.out.println(
+                "ERROR: Unexpectedly connected to database " + dbName);
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("08004")) {
+                System.out.println("Correct behavior: SQLException: " +
+                    e.getMessage());
+            } else {
+                errorPrintAndExit(e);
+            }
+        }
+
+        // Log in as a user with read-only access
+        try {
+            // connection should succeed, but create table should fail
+            String newURL = connectionURL + 
+                ";user=guest;password=java5w6x";
+            System.out.println("Trying to connect to " + newURL);
+            conn = DriverManager.getConnection(newURL);
+            System.out.println("Connected to database " + dbName +
+                " with read-only access");
+
+            Statement s = conn.createStatement();
+            s.executeUpdate("CREATE TABLE t1(C1 VARCHAR(6))");
+            System.out.println(
+                "ERROR: Unexpectedly allowed to modify database " +
+                     dbName);
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("25503")) {
+                System.out.println("Correct behavior: SQLException: " +
+                    e.getMessage());
+                try {
+                    conn.close();
+                } catch (SQLException ee) {
+                    errorPrintAndExit(ee);
+                }
+            } else {
+                errorPrintAndExit(e);
+            }
+        }
+
+        // Log in as a user with full access
+        // Create, update, and query table
+        try {
+            // this should succeed
+            String newURL = connectionURL + 
+                ";user=mary;password=little7xylamb";
+            System.out.println("Trying to connect to " + newURL);
+            conn = DriverManager.getConnection(newURL);
+            System.out.println("Connected to database " + dbName);
+
+            Statement s = conn.createStatement();
+            s.executeUpdate("CREATE TABLE T1(C1 VARCHAR(6))");
+            System.out.println("Created table T1");
+            s.executeUpdate("INSERT INTO T1 VALUES('hello')");
+
+            ResultSet rs = s.executeQuery("SELECT * FROM T1");
+            rs.next();
+            System.out.println("Value of T1/C1 is " + rs.getString(1));
+            s.executeUpdate("DROP TABLE T1");
+
+            s.close();
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+
+        try {
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+    }
+
+    /** 
+     * Close connection and shut down database.
+     *
+     * @param conn a connection to the database
+     */
+    public static void cleanUpAndShutDown (Connection conn)
+            throws SQLException {
+
+        String dbName="authClientDB";
+        String connectionURL = "jdbc:derby://localhost:1527/" + dbName;
+
+        try {
+            conn.close();
+            System.out.println("Closed connection");
+
+            // As mary, shut down the database.
+            try {
+                String newURL = connectionURL + 
+                    ";user=mary;password=little7xylamb;shutdown=true";
+                DriverManager.getConnection(newURL);
+            } catch (SQLException se)  {
+                if ( !se.getSQLState().equals("08006") ) {
+                    throw se;
+                }
+            }
+            System.out.println("Database shut down normally");
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+    }
+
+    /** 
+     * Report exceptions, with special handling of SQLExceptions,
+     * and exit.
+     *
+     * @param e an exception (Throwable)
+     */
+    static void errorPrintAndExit(Throwable e) {
+        if (e instanceof SQLException)
+            SQLExceptionPrint((SQLException)e);
+        else {
+            System.out.println("A non-SQL error occurred.");
+            e.printStackTrace();
+        }
+        System.exit(1);
+    }
+
+    /**
+     * Iterate through a stack of SQLExceptions.
+     *
+     * @param sqle a SQLException
+     */
+    static void SQLExceptionPrint(SQLException sqle) {
+        while (sqle != null) {
+            System.out.println("\n---SQLException Caught---\n");
+            System.out.println("SQLState:   " + (sqle).getSQLState());
+            System.out.println("Severity: " + (sqle).getErrorCode());
+            System.out.println("Message:  " + (sqle).getMessage());
+            sqle = sqle.getNextException();
+        }
+    }
+}</pre>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="rdevcsecure125.html" title="In this example, Derby is running in a user-designed application server.">User authentication example in a client/server environment</a></div>
+</div>
+</div>
+
+</body>
+</html>

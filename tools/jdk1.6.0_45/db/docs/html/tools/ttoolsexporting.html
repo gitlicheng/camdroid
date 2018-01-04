@@ -1,0 +1,141 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="copyright" content="(C) Copyright 2005" />
+<meta name="DC.rights.owner" content="(C) Copyright 2005" />
+<meta content="public" name="security" />
+<meta content="index,follow" name="Robots" />
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<meta content="task" name="DC.Type" />
+<meta name="DC.Title" content="Exporting data using the built-in procedures" />
+<meta name="abstract" content="You can use the Derby export procedures to export all of the data from table or query, or to export LOB data separately from the other data." />
+<meta name="description" content="You can use the Derby export procedures to export all of the data from table or query, or to export LOB data separately from the other data." />
+<meta content="import and export procedures, bulk export, exporting data, system procedures, export using" name="DC.subject" />
+<meta content="import and export procedures, bulk export, exporting data, system procedures, export using" name="keywords" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimport27052.html" />
+<meta scheme="URI" name="DC.Relation" content="rtoolsimport91458.html" />
+<meta scheme="URI" name="DC.Relation" content="rtoolsexportarguements.html" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimport16245.html" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimport98264.html" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimport27052.html" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimportlobs.html" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimportdefaultformat.html" />
+<meta scheme="URI" name="DC.Relation" content="ttoolsimporting.html" />
+<meta scheme="URI" name="DC.Relation" content="rtoolsimport91458.html" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimportjdbc.html" />
+<meta scheme="URI" name="DC.Relation" content="ctoolsimportnulls.html" />
+<meta scheme="URI" name="DC.Relation" content="rtoolsimportcodeset.html" />
+<meta scheme="URI" name="DC.Relation" content="rtoolsexportarguements.html" />
+<meta content="XHTML" name="DC.Format" />
+<meta content="ttoolsexporting" name="DC.Identifier" />
+<meta content="en-us" name="DC.Language" />
+<link href="commonltr.css" type="text/css" rel="stylesheet" />
+<title>Exporting data using the built-in procedures</title>
+</head>
+<body id="ttoolsexporting"><a name="ttoolsexporting"><!-- --></a>
+
+
+<h1 class="topictitle1">Exporting data using the built-in procedures</h1>
+
+
+
+<div><p>You can use the <span>Derby</span> export
+procedures to export all of the data from table or query, or to export LOB
+data separately from the other data.</p>
+
+<div class="section" />
+
+
+<div class="p"><span>Choose the correct procedure for the type of export that you want
+to perform. For examples of these procedures, see <a href="rtoolsimport91458.html#rtoolsimport91458">Examples of bulk import and export</a>.</span>
+
+<table class="choicetableborder" summary="" cellspacing="0" cellpadding="4" rules="rows" frame="hsides" border="1">
+<thead><tr><th valign="bottom" align="left" id="N10069-option">Type of export</th>
+<th valign="bottom" align="left" id="N10069-desc">Procedure to use</th></tr></thead>
+<tbody>
+
+<tr><td valign="top" headers="N10069-option" id="N10084"><strong>To export all the data from a table to a single export file,
+including the LOB data </strong></td>
+<td valign="top" headers="N10069-desc N10084"> <pre>SYSCS_UTIL.SYSCS_EXPORT_TABLE (IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportschemaname">SCHEMANAME</a> VARCHAR(128),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexporttablename">TABLENAME</a> VARCHAR(128), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportfilename">FILENAME</a> VARCHAR(32672),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcolumndelimiter">COLUMNDELIMITER</a> CHAR(1), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcharacterdelimiter">CHARACTERDELIMITER</a> CHAR(1),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcodeset">CODESET</a> VARCHAR(128))</pre>
+</td>
+
+</tr>
+
+<tr><td valign="top" headers="N10069-option" id="N100C4"><strong>To export all the data from a table, and place the LOB data
+into a separate export file</strong></td>
+<td valign="top" headers="N10069-desc N100C4"><pre>SYSCS_UTIL.SYSCS_EXPORT_TABLE_LOBS_TO_EXTFILE (IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportschemaname">SCHEMANAME</a> VARCHAR(128),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexporttablename">TABLENAME</a> VARCHAR(128), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportfilename">FILENAME</a> VARCHAR(32672),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcolumndelimiter">COLUMNDELIMITER</a> CHAR(1), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcharacterdelimiter">CHARACTERDELIMITER</a> CHAR(1),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcodeset">CODESET</a> VARCHAR(128), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportlobsfilename">LOBSFILNAME</a> VARCHAR(32672))</pre>
+<p>A
+reference to the location of the LOB data is placed in the LOB column in the
+main export file.</p>
+ </td>
+</tr>
+
+<tr><td valign="top" headers="N10069-option" id="N1010F"><strong>To export the result of a SELECT statement to a single file,
+including the LOB data</strong></td>
+<td valign="top" headers="N10069-desc N1010F"><pre>SYSCS_UTIL.SYSCS_EXPORT_QUERY (IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportselectstatement">SELECTSTATEMENT</a> VARCHAR(32672),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportfilename">FILENAME</a> VARCHAR(32672),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcolumndelimiter">COLUMNDELIMITER</a> CHAR(1), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcharacterdelimiter">CHARACTERDELIMITER</a> CHAR(1),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcodeset">CODESET</a> VARCHAR(128))</pre>
+</td>
+
+</tr>
+
+<tr><td valign="top" headers="N10069-option" id="N10147"><strong>To export the result of a SELECT statement to a main export
+file, and place the LOB data into a separate export file</strong></td>
+<td valign="top" headers="N10069-desc N10147"><pre>SYSCS_UTIL.SYSCS_EXPORT_QUERY_LOBS_TO_EXTFILE (IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportselectstatement">SELECTSTATEMENT</a> VARCHAR(32672),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportfilename">FILENAME</a> VARCHAR(32672),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcolumndelimiter">COLUMNDELIMITER</a> CHAR(1), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcharacterdelimiter">CHARACTERDELIMITER</a> CHAR(1),  IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportcodeset">CODESET</a> VARCHAR(128), IN <a href="rtoolsexportarguements.html#rtoolsexportarguements__rtoolsexportlobsfilename">LOBSFILENAME</a> VARCHAR(32672))</pre>
+<p>A
+reference to the LOB data is written to the main export file.</p>
+</td>
+
+</tr>
+
+</tbody></table>
+
+</div>
+
+
+</div>
+
+<div>
+<ul class="ullinks">
+<li class="ulchildlink"><strong><a href="rtoolsexportarguements.html">Parameters for the export procedures</a></strong><br />
+The Derby export procedures use specific parameters.</li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="ctoolsimport16245.html" title="You can import and export large amounts of data between files and the Derby database. Instead of having to use INSERT and SELECT statements, you can use Derby system procedures to import data directly from files into tables and to export data from tables into files.">Using the bulk import and export procedures</a></div>
+</div>
+<div class="relconcepts"><strong>Related concepts</strong><br />
+<div><a href="ctoolsimport98264.html" title="">Methods for running the import and export procedures</a></div>
+<div><a href="ctoolsimportlobs.html" title="You can import and export large objects (LOBs) using the Derby system procedures.">Bulk import and export of large objects</a></div>
+<div><a href="ctoolsimportdefaultformat.html" title="There are specific requirements for the format of the input and output files when you import and export data.">File format for input and output</a></div>
+<div><a href="ctoolsimportjdbc.html" title="You can run import and export procedures from a JDBC program.">Import and export procedures from JDBC</a></div>
+<div><a href="ctoolsimportnulls.html" title="">How the Import and export procedures process NULL values</a></div>
+<div><a href="ctoolsimport27052.html" title="There are requirements and limitations that you must consider before you use the Derby import and export procedures.">Bulk import and export requirements and considerations</a></div>
+</div>
+<div class="reltasks"><strong>Related tasks</strong><br />
+<div><a href="ttoolsimporting.html" title="You can use the Derby import procedures to import all of the data from table or query, or to import LOB data separately from the other data.">Importing data using the built-in procedures</a></div>
+</div>
+<div class="relref"><strong>Related reference</strong><br />
+<div><a href="rtoolsimportcodeset.html" title="Import and export procedures accept arguments to specify codeset values. You can specify the codeset (character encoding) for import and export procedures to override the system default.">CODESET values for import and export procedures</a></div>
+<div><a href="rtoolsimport91458.html" title="">Examples of bulk import and export</a></div>
+<div><a href="rtoolsexportarguements.html" title="The Derby export procedures use specific parameters.">Parameters for the export procedures</a></div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<html>
+<title>Release Notes for Derby 10.6.2.1</title>
+<body>
+<h1>
+<a name="Release Notes for Derby 10.6.2.1"></a>Release Notes for Derby 10.6.2.1</h1>
+<blockquote>
+<p>These notes describe the difference between Derby release 10.6.2.1 and the preceding release 10.6.1.0.</p>
+</blockquote>
+<ul>
+<li>
+<a href="#Overview">Overview</a>
+</li>
+<li>
+<a href="#New Features">New Features</a>
+</li>
+<li>
+<a href="#Bug Fixes">Bug Fixes</a>
+</li>
+<li>
+<a href="#Issues">Issues</a>
+</li>
+<li>
+<a href="#Build Environment">Build Environment</a>
+</li>
+</ul>
+<h2>
+<a name="Overview"></a>Overview</h2>
+<blockquote>
+
+<p>
+Derby is a pure Java relational database engine using standard SQL and
+JDBC as its APIs.
+</p>
+
+
+<p>
+Derby functionality includes:
+</p>
+
+
+<ul>
+
+<li>Embedded engine with JDBC drivers</li>
+
+<li>Network Server</li>
+
+<li>Network client JDBC drivers</li>
+
+<li>Command line tools: ij (SQL scripting), dblook (schema dump) and sysinfo (sy
+stem info)</li>
+
+</ul>
+
+</blockquote>
+<h2>
+<a name="New Features"></a>New Features</h2>
+<blockquote>
+This is a bug fix release which also provides localizations of new 10.6 messages. No new features were added. This release addresses a data corruption issue. <a class="external" href="http://issues.apache.org/jira/browse/DERBY-4677"><strong>DERBY-4677</strong></a>. See release note for unique index corruption detection and repair.
+</blockquote>
+<h2>
+<a name="Bug Fixes"></a>Bug Fixes</h2>
+<blockquote>
+<p>The following issues are addressed by Derby release 10.6.2.1. These issues are not addressed in the preceding 10.6.1.0 release.</p>
+<table border="2">
+<tr>
+<td><b>Issue Id</b></td><td><b>Description</b></td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4798">DERBY-4798</a></td><td>NPE in nested outer join</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4770">DERBY-4770</a></td><td>Files missing svn:eol-style (August 2010)</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4748">DERBY-4748</a></td><td>StringIndexOutOfBoundsException on syntax error (invalid COMMIT)</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4747">DERBY-4747</a></td><td>ttestSetPortPriority junit test failing in tinderbox runs with junit.framework.AssertionFailedError: Port 1537 exceeeds expected maximum.</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4736">DERBY-4736</a></td><td>ASSERT FAIL when code generating a column reference in a join predicate in presence of other outer join reordering</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4731">DERBY-4731</a></td><td>XA two phase commit with active  GLOBAL TEMPORARY TABLE causes  An internal error identified by RawStore module</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4722">DERBY-4722</a></td><td>Error in SQL example of SYSCS_UTIL.SYSCS_DISABLE_LOG_ARCHIVE_MODE</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4717">DERBY-4717</a></td><td>Driver trace file isn't closed/released on physical connection close when specified with the traceFile attribute/setter</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4715">DERBY-4715</a></td><td>Write jvm information and path of derby.jar to derby.log</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4712">DERBY-4712</a></td><td>Complex nested joins problems</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4706">DERBY-4706</a></td><td>Remove stale and potentially unused code Request.writeEncryptedScalarStream</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4700">DERBY-4700</a></td><td>Add method to obtain a bogus port in TestConfiguration</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4699">DERBY-4699</a></td><td>Build breaks if a Java 6 JDK is detected when compiling with a Java 5 compiler</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4698">DERBY-4698</a></td><td>Simple query with HAVING clause crashes with NullPointerException</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4694">DERBY-4694</a></td><td>Build breaks on Mac OS X due to JDK classpath issues</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4693">DERBY-4693</a></td><td>column rename looses 'identity' attribute.</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4686">DERBY-4686</a></td><td>SQLBinary.writeBlob is inefficient, reading one byte at a time from the source BLOB</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4682">DERBY-4682</a></td><td>Inaccurate description of how a statement is completed in Developer's guide</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4679">DERBY-4679</a></td><td>Several left outer joins causes unstable query with incorrect results</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4677">DERBY-4677</a></td><td>SYSCS_COMPRESS_TABLE disables unique constraints</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4676">DERBY-4676</a></td><td>NullPointerException on SELECT on INNER JOIN</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4671">DERBY-4671</a></td><td>Embedded driver does not work with jbossCache</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4666">DERBY-4666</a></td><td>Localize 10.6.1 messages</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4664">DERBY-4664</a></td><td>Change Derby internal stored procedures to avoid DriverManager.getConnection(&amp;quot;jdbc:default:connection&amp;quot;) as it may be recognized by other Drivers</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4661">DERBY-4661</a></td><td>Reduce size of encoding buffer for short character values</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4654">DERBY-4654</a></td><td>Restriction.toSQL() doesn't escape special characters</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4651">DERBY-4651</a></td><td>Hidden assumptions in FromVTI.makeRestriction()</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4638">DERBY-4638</a></td><td>Expose names of top-level test suites for easier scripting</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4632">DERBY-4632</a></td><td>Delete Maven1 build files</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4610">DERBY-4610</a></td><td>Error attempting delete with cascade and triggers</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4597">DERBY-4597</a></td><td>remove references to IBM jcc driver from sysinfo </td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4582">DERBY-4582</a></td><td>Timestamps inserted with GMT calendar are 1 hour later when subsequently read with GMT calendar (Server Mode Only).</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4548">DERBY-4548</a></td><td>would like an alternative location for ant.properties</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4471">DERBY-4471</a></td><td>Left outer join reassociation rewrite gives wrong result</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4211">DERBY-4211</a></td><td>'derbyall/encryptionAll/storemats.fail:store/updatelocksJDBC30.sql' fails with unexpected locks</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-4179">DERBY-4179</a></td><td>bootLock.java fails with missing exception on z/OS with  pmz3160sr2ifix-20081021_01(SR2+IZ32776+IZ33456), and Windows Vista</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-3856">DERBY-3856</a></td><td>difference between Embedded vs DerbyNetClient in format of return from timestamp(cast(? as varchar(32)))</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-2925">DERBY-2925</a></td><td>Prevent export from overwriting existing files</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-2532">DERBY-2532</a></td><td>Client does not return SQLException on XAConnection.getXAResource() on a closed connection, Embedded does</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-2026">DERBY-2026</a></td><td>Setting a login timeout in client driver can lead to query timeout</td>
+</tr>
+<tr>
+<td><a href="https://issues.apache.org/jira/browse/DERBY-1595">DERBY-1595</a></td><td>Network server fails with DRDAProtocolException if a BLOB with size 2147483647 is streamed from client</td>
+</tr>
+</table>
+</blockquote>
+<h2>
+<a name="Issues"></a>Issues</h2>
+<blockquote>
+<p>Compared with the previous release (10.6.1.0), Derby release 10.6.2.1 introduces the following new features and incompatibilities. These merit your special attention.</p>
+<ul>
+<li>
+<a href="#Note for DERBY-4677">
+<p>Note for DERBY-4677: 
+  Unique nullable constraint may be disabled after compress or import operations on the table.
+</p>
+</a>
+</li>
+<li>
+<a href="#Note for DERBY-2925">
+<p>Note for DERBY-2925: 
+Prevent export from overwriting existing files
+</p>
+</a>
+</li>
+</ul>
+<hr>
+<h3>
+<a name="Note for DERBY-4677"></a>Note for DERBY-4677</h3>
+<blockquote>
+
+
+<h4>Summary of Change</h4>
+
+<p>
+  Unique nullable constraint may be disabled after compress or import operations on the table.
+</p>
+
+
+
+<h4>Symptoms Seen by Applications Affected by Change</h4>
+
+<p>
+  Prior to DERBY-4677 fix, the unique nullable constraint might have been disabled or violated after calls to 
+  SYSCS_UTIL.SYSCS_COMPRESS_TABLE, or SYSCS_UTIL.SYSCS_IMPORT_TABLE.  While the DERBY-4677 fix corrects the problem for new 
+  indexes, it does not automatically repair damage to existing indexes. Applications using unique nullable indexes, (first 
+  allowed in version 10.4.2.1) may find that duplicate rows exist, despite the table being created with the unique constraint.   
+  In addition to the obvious problem of this being allowed, users may also see incorrect query results where one row is returned 
+  even though there are multiple qualifying rows.  
+</p>
+
+
+
+
+<h4>Rationale for Change</h4>
+
+<p>
+  The change fixed a serious bug that allowed duplicate rows despite a unique index. Users should upgrade and manually resolve 
+  prior damage as described below.
+</p>
+
+
+
+<h4>Application Changes Required</h4>
+
+<p>
+  Users using unique nullable indexes (Derby 10.4 and higher) should upgrade immediately to a Derby version that contains the fix
+  for DERBY-4677 AND drop and recreate those indexes. The fix was made in the following revisions.
+<pre>
+
+<li>	10.4.2.1 (build 956034)</li>
+
+<li> 	10.5.3.1 (build 955487)</li>
+
+<li>	10.6.1.1 (build 955790)</li>
+
+</pre>
+  The fix will not take care of duplicate rows that may have already made their way into the database. Such duplicate rows will 
+  have to be handled by the user manually. The steps to take would be to drop and recreate unique nullable indexes. During 
+  recreation, user might run into duplicate rows SQL exception. Such duplicate rows will have to be manually handled appropriately 
+  by the user. 
+</p>
+
+
+
+</blockquote>
+<hr>
+<h3>
+<a name="Note for DERBY-2925"></a>Note for DERBY-2925</h3>
+<blockquote>
+
+<!-- 
+  SUMMARIZE THE ISSUE. This is a one line summary of the issue.
+
+  For instance:
+
+  Applications may no longer open two InputStreams on the same ResultSet column.
+-->
+
+
+<h4>Summary of Change</h4>
+
+<p>
+Prevent export from overwriting existing files
+</p>
+
+
+<!-- 
+  DESCRIBE WHAT IT IS THAT THE USER ACTUALLY SEES WHEN THE PROBLEM OCCURS.
+
+  For instance:
+
+  In the previous release, applications were able to open two
+  InputStreams on the same column. Depending on how these streams
+  interacted, the value siphoned out of the column was erratic. Now
+  Derby raises a SQLException when the application attempts to create
+  the second InputStream.
+-->
+
+
+<h4>Symptoms Seen by Applications Affected by Change</h4>
+
+<p>
+Due to security concerns, and to avoid accidental file damage, Export processing
+will not overwrite existing files. As a result, applications may observe some behavioral changes with respect to Export operations.
+</p>
+
+
+<!-- 
+  OPTIONAL: DESCRIBE INCOMPATIBILITIES WITH PREVIOUS RELEASE, IF ANY.
+
+  For instance:
+
+  Applications which open two InputStreams on the ResultSet column now
+  fail.
+-->
+
+
+<h4>Incompatibilities with Previous Release</h4>
+
+<p>
+
+<OL>
+	
+<LI>SYSCS_UTIL.SYSCS_EXPORT_TABLE: Exports of all the data from a table to an existing file is no longer possible and the user/application must remove the existing file, otherwise ERROR XIE0S will be returned. </LI>
+	 
+<LI>SYSCS_UTIL.SYSCS_EXPORT_QUERY: Exports of all the data returned from the SELECT statement to an existing file is no longer possible and the user/application must remove the existing file, otherwise ERROR XIE0S will be returned. </LI>
+	
+<LI>SYSCS_UTIL.SYSCS_EXPORT_QUERY_LOBS_TO_EXTFILE: Export of the result of a SELECT statement to a main data output file, and the LOB data into a large object auxiliary file to an existing file is no longer possible and the user/application must remove the existing data file and/or large object auxiliary file, otherwise ERROR XIE0S will be returned if the data file exists or ERROR XIE0T will be returned if the large object auxiliary file exists.</LI>
+
+
+</OL>
+
+</p>
+
+
+<!-- 
+  DESCRIBE WHY THE CHANGE WAS MADE.
+
+  For instance:
+
+  The previous behavior violated the JDBC standard. The new behavior
+  is correct.
+-->
+
+
+<h4>Rationale for Change</h4>
+
+<p>
+Due to security concerns and to avoid accidental file damage, Export processing will no longer overwrite an existing file.
+</p>
+
+
+<!-- 
+  OPTIONAL: DESCRIBE HOW TO REVERT TO THE PREVIOUS BEHAVIOR OR
+  OTHERWISE AVOID THE INCOMPATIBILITIES INTRODUCED BY THIS CHANGE.
+
+  For instance:
+
+  Users must recode applications which open multiple streams on the same column.
+-->
+
+
+<h4>Application Changes Required</h4>
+
+<p>
+The application needs to specify a different filename which does not exists or delete the existing file before performing the Export operation.
+</p>
+
+
+
+</blockquote>
+</blockquote>
+<h2>
+<a name="Build Environment"></a>Build Environment</h2>
+<blockquote>
+<p>Derby release 10.6.2.1 was built using the following environment:</p>
+<ul>
+<li>
+<b>Branch</b> - Source code came from the 10.6 branch.</li>
+<li>
+<b>Machine</b> - Git(Msysgit) on Microsoft Windows 7 Ultimate 2009 64 bits</li>
+<li>
+<b>Ant</b> - Apache Ant version 1.7.1 compiled on June 27 2008</li>
+<li>
+<b>JDK 1.4</b> - java version "1.4.2_19"
+  Java(TM) 2 Runtime Environment, Standard Edition (build 1.4.2_19-b04)
+  Java HotSpot(TM) Client VM (build 1.4.2_19-b04, mixed mode)</li>
+<li>
+<b>Java 6</b> - java version "1.6.0_13"
+  Java(TM) SE Runtime Environment (build 1.6.0_13-b03)
+  Java HotSpot(TM) Client VM (build 11.3-b02, mixed mode)</li>
+<li>
+<b>Compiler</b> - Sun 1.6.0_13_b03</li>
+</ul>
+</blockquote>
+</body>
+</html>

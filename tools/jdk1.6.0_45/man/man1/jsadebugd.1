@@ -1,0 +1,115 @@
+." Copyright (c) 2004, 2010, Oracle and/or its affiliates. All rights reserved. 
+."
+.TH jsadebugd 1 "06 Apr 2010"
+." Generated from HTML by html2man (author: Eric Armstrong)
+
+.LP
+.SH "Name"
+jsadebugd \- Serviceability Agent Debug Daemon
+.LP
+.SH "SYNOPSIS"
+.LP
+
+.LP
+.nf
+\f3
+.fl
+\fP\f3jsadebugd\fP pid [ server\-id ]
+.fl
+\f3jsadebugd\fP executable core [ server\-id ]
+.fl
+.fi
+
+.LP
+.SH "PARAMETERS"
+.LP
+
+.LP
+.RS 3
+.TP 3
+pid 
+process id of the process to which the debug server should attach. The process must be a Java process. To get a list of Java processes running on a machine, jps(1) may be used. At most one instance of the debug server may be attached to a single process. 
+.RE
+
+.LP
+.RS 3
+.TP 3
+executable 
+.RE
+
+.LP
+.RS 3
+.TP 3
+Java executable from which the core dump was produced 
+.RE
+
+.LP
+.RS 3
+.TP 3
+core 
+Core file to which the debug server should attach. 
+.RE
+
+.LP
+.RS 3
+.TP 3
+server\-id 
+Optional unique id, needed if multiple debug servers are started on the same machine. This ID must be used by remote clients to identify the particular debug server to attach. Within a single machine, this ID must be unique. 
+.RE
+
+.LP
+.SH "DESCRIPTION"
+.LP
+
+.LP
+.LP
+\f3jsadebugd\fP attaches to a Java process or core file and acts as a debug server. Remote clients such as jstack(1), jmap(1), and jinfo(1) can attach to the server using Java Remote Method Invocation (RMI). Before starting \f2jsadebugd\fP, 
+.na
+\f2rmiregistry\fP @
+.fi
+http://java.sun.com/javase/6/docs/technotes/tools/index.html#rmi must be started with:
+.LP
+.RS 3
+
+.LP
+.nf
+\f3
+.fl
+\fP\f4rmiregistry \-J\-Xbootclasspath/p:$JAVA_HOME/lib/sajdi.jar\fP\f3
+.fl
+\fP
+.fi
+.RE
+
+.LP
+.LP
+where \f2$JAVA_HOME\fP is the JDK installation directory. If rmiregistry was not started, jsadebugd will start an rmiregistry in a standard (1099) port internally. Debug server may be stopped by sending SIGINT (pressing Ctrl\-C) to it.
+.LP
+.LP
+\f3NOTE \- This utility is unsupported and may or may not be available in future versions of the JDK. jsadebugd is not currently available on Windows platforms.\fP
+.LP
+.SH "SEE ALSO"
+.LP
+.RS 3
+.TP 2
+o
+jinfo(1) 
+.TP 2
+o
+jmap(1) 
+.TP 2
+o
+jps(1) 
+.TP 2
+o
+jstack(1) 
+.TP 2
+o
+.na
+\f2rmiregistry\fP @
+.fi
+http://java.sun.com/javase/6/docs/technotes/tools/index.html#rmi 
+.RE
+
+.LP
+ 

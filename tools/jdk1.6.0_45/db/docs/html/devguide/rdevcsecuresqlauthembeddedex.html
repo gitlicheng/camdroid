@@ -1,0 +1,564 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="copyright" content="(C) Copyright 2005" />
+<meta name="DC.rights.owner" content="(C) Copyright 2005" />
+<meta content="public" name="security" />
+<meta content="index,follow" name="Robots" />
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<meta content="reference" name="DC.Type" />
+<meta name="DC.Title" content="User authentication and SQL authorization embedded example" />
+<meta name="abstract" content="This example, AuthExampleEmbeddedSQLAuth.java, shows how to use SQL authorization, in addition to Derby's built-in user authentication and user authorization, with the embedded driver." />
+<meta name="description" content="This example, AuthExampleEmbeddedSQLAuth.java, shows how to use SQL authorization, in addition to Derby's built-in user authentication and user authorization, with the embedded driver." />
+<meta scheme="URI" name="DC.Relation" content="rdevcsecuresqlauthexs.html" />
+<meta content="XHTML" name="DC.Format" />
+<meta content="rdevcsecuresqlauthembeddedex" name="DC.Identifier" />
+<meta content="en-us" name="DC.Language" />
+<link href="commonltr.css" type="text/css" rel="stylesheet" />
+<title>User authentication and SQL authorization embedded example</title>
+</head>
+<body id="rdevcsecuresqlauthembeddedex"><a name="rdevcsecuresqlauthembeddedex"><!-- --></a>
+
+
+<h1 class="topictitle1">User authentication and SQL authorization embedded example</h1>
+
+
+
+<div><p>This example, <samp class="codeph">AuthExampleEmbeddedSQLAuth.java</samp>,
+shows how to use SQL authorization, in addition to 
+<span>Derby</span>'s
+built-in user authentication and user authorization, with the embedded
+driver.</p>
+
+<div class="section">
+<div class="important"><span class="importanttitle">Important: </span><span>Derby</span>'s
+built-in authentication mechanism is suitable only for development and testing
+purposes. It is strongly recommended that production systems rely on LDAP or a
+user-defined class for authentication. It is also strongly recommended that
+production systems protect network connections with SSL/TLS.</div>
+
+<p>This example is a single long program. A similar example that uses the client
+driver, in
+<a href="rdevcsecuresqlauthclientex.html#rdevcsecuresqlauthclientex">User authentication and SQL authorization client example</a>,
+uses one program to set properties and a second program to perform database
+operations. Either example would work equally well in the other format.</p>
+
+<p>See <a href="cdevcsecure36595.html#cdevcsecure36595">User authorizations</a> for more
+information on using SQL authorization, which allows you to use ANSI SQL
+Standard GRANT and REVOKE statements. Compare this example to the one in
+<a href="rdevcsecure26537.html#rdevcsecure26537">User authentication and authorization embedded example</a>, which does not use
+SQL authorization.</p>
+
+<p>The program does the following:</p>
+
+<ol>
+<li>Starts <span>Derby</span> and creates
+a database named <samp class="codeph">sqlAuthEmbDB</samp>, using the embedded driver. The
+connection URL creates the database as the user <samp class="codeph">mary</samp>, who is
+therefore the database owner. After SQL authorization is enabled, only the
+database owner will have the right to set and read database properties.</li>
+
+<li>Sets database properties that create users with different levels of access
+(no access, read-only access, and full access), that require authentication, and
+that turn on SQL authorization. The users <samp class="codeph">mary</samp> and
+<samp class="codeph">sqlsam</samp> have full access.</li>
+
+<li>Closes the connection, then stops and restarts the database so that the
+authentication and SQL authorization changes can take effect.</li>
+
+<li>Tries to connect to the database without a username and password, raising
+an exception.</li>
+
+<li>Tries to connect to the database as a user with no access, raising an
+exception.</li>
+
+<li>Connects to the database as a user with read-only access; the connection
+succeeds, but an attempt to create a table raises an exception.</li>
+
+<li>Connects to the database as <samp class="codeph">mary</samp>, who has full access; this
+user creates and populates a table. This user also grants select and insert
+privileges on this table to another user.</li>
+
+<li>Connects to the database as <samp class="codeph">sqlsam</samp>, the user who has been
+granted select and insert privileges by <samp class="codeph">mary</samp>. This user has
+full (that is, read-write) access on the connection level, but has limited
+powers for this table because SQL authorization is active. The user successfully
+performs select and insert operations on the table, but an attempt to delete a
+row from the table raises an exception.</li>
+
+<li>Connects to the database again as <samp class="codeph">mary</samp>, who then deletes
+the table.</li>
+
+<li>Closes the connection, shuts down the database, then shuts down
+<span>Derby</span>.</li>
+
+</ol>
+
+<p>Make sure that the <samp class="codeph">javac</samp> command is in your path, then
+compile the program as follows:
+</p>
+
+<p><kbd class="userinput">javac AuthExampleEmbeddedSQLAuth.java</kbd></p>
+
+<p>When you run <samp class="codeph">AuthExampleEmbeddedSQLAuth</samp>, make
+sure that <samp class="codeph">%DERBY_HOME%\lib\derby.jar</samp> (or
+<samp class="codeph">$DERBY_HOME/lib/derby.jar</samp>) is in your classpath. For example,
+you might use the following command on a Windows system:</p>
+
+<p><kbd class="userinput">java -cp .;%DERBY_HOME%\lib\derby.jar AuthExampleEmbeddedSQLAuth</kbd></p>
+
+</div>
+
+<div class="example"><h4 class="sectiontitle">Source code for <samp class="codeph">AuthExampleEmbeddedSQLAuth.java</samp></h4>
+<pre>import java.sql.*;
+
+public class AuthExampleEmbeddedSQLAuth {
+
+    public static void main(String[] args) {
+
+        String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+        String dbName="sqlAuthEmbDB";
+        String dbOwner="mary";
+        String connectionURL = "jdbc:derby:" + dbName + 
+            ";user=" + dbOwner + ";create=true";
+        Connection conn = null;
+
+        // Load the driver. This code is not needed if you are using 
+        // JDK 6, because in that environment the driver is loaded 
+        // automatically when the application requests a connection.
+        try {
+            Class.forName(driver);
+            System.out.println(driver + " loaded.");
+        } catch (java.lang.ClassNotFoundException ce) {
+            System.err.print("ClassNotFoundException: ");
+            System.err.println(ce.getMessage());
+            System.out.println("\n Make sure your CLASSPATH variable " +
+                "contains %DERBY_HOME%\\lib\\derby.jar " +
+                "(${DERBY_HOME}/lib/derby.jar).\n");
+        } catch (Exception ee) {
+            errorPrintAndExit(ee);
+        }
+
+        // Create and boot the database as user mary (who then becomes
+        // the database owner), set up users and then shut down the
+        // database
+        try {
+            System.out.println("Trying to connect to " + connectionURL);
+            conn = DriverManager.getConnection(connectionURL);
+            System.out.println("Connected to database " + connectionURL);
+
+            turnOnBuiltInUsers(conn);
+
+            // Close connection
+            conn.close();
+            System.out.println("Closed connection");
+
+            /* Shut down the database to make static properties take
+             * effect. Because the default connection mode is now 
+             * noAccess, you must specify a user that has access. But
+             * because requireAuthentication and sqlAuthorization do not
+             * take effect until you restart the database, you do not
+             * need to specify a password.
+             *
+             * Database shutdown throws the 08006 exception to confirm
+             * success.
+             */
+            try {
+                DriverManager.getConnection("jdbc:derby:" + dbName +
+                    ";user=mary;shutdown=true");
+            } catch (SQLException se) {
+                if ( !se.getSQLState().equals("08006") ) {
+                    throw se;
+                }
+            }
+            System.out.println("Database shut down normally");
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+
+        // Restart database and confirm that unauthorized users cannot
+        //  access it
+        connectionURL = "jdbc:derby:" + dbName;
+
+        // Try to log in with no username or password
+        try {
+            // connection attempt should fail
+            System.out.println("Trying to connect to " + connectionURL +
+                " without username or password");
+            conn = DriverManager.getConnection(connectionURL);
+            System.out.println(
+                "ERROR: Unexpectedly connected to database " + dbName);
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("08004")) {
+                System.out.println("Correct behavior: SQLException: " +
+                    e.getMessage());
+            } else {
+                errorPrintAndExit(e);
+            }
+        }
+
+        // Try to log in as a valid user with noAccess
+        try {
+            // connection attempt should fail
+            String newURL = connectionURL + ";user=sa;password=ajaxj3x9";
+            System.out.println("Trying to connect to " + newURL);
+            conn = DriverManager.getConnection(newURL);
+            System.out.println(
+                "ERROR: Unexpectedly allowed to connect to database " +
+                     dbName);
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("08004")) {
+                System.out.println("Correct behavior: SQLException: " +
+                    e.getMessage());
+            } else {
+                errorPrintAndExit(e);
+            }
+        }
+
+        // Log in as a user with read-only access
+        try {
+            // connection should succeed, but create table should fail
+            String newURL = connectionURL + 
+                ";user=guest;password=java5w6x";
+            System.out.println("Trying to connect to " + newURL);
+            conn = DriverManager.getConnection(newURL);
+            System.out.println("Connected to database " + dbName +
+                " with read-only access");
+
+            Statement s = conn.createStatement();
+            s.executeUpdate(
+                "CREATE TABLE accessibletbl(textcol VARCHAR(6))");
+            System.out.println(
+                "ERROR: Unexpectedly allowed to modify database " +
+                     dbName);
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("25503")) {
+                System.out.println("Correct behavior: SQLException: " +
+                    e.getMessage());
+                try {
+                    conn.close();
+                } catch (SQLException ee) {
+                    errorPrintAndExit(ee);
+                }
+            } else {
+                errorPrintAndExit(e);
+            }
+        }
+
+        // Log in as a user with full access
+        // Create, update, and query table
+        // Grant select and insert privileges to another user
+        try {
+            // this should succeed
+            String newURL = connectionURL +
+                ";user=mary;password=little7xylamb";
+            System.out.println("Trying to connect to " + newURL);
+            conn = DriverManager.getConnection(newURL);
+            System.out.println("Connected to database " + dbName);
+
+            Statement s = conn.createStatement();
+
+            s.executeUpdate(
+                "CREATE TABLE accessibletbl(textcol VARCHAR(6))");
+            System.out.println("Created table accessibletbl");
+            s.executeUpdate("INSERT INTO accessibletbl VALUES('hello')");
+
+            ResultSet rs = s.executeQuery("SELECT * FROM accessibletbl");
+            rs.next();
+            System.out.println("Value of accessibletbl/textcol is " + 
+                rs.getString(1));
+
+            // grant insert privileges on table to user sqlsam
+            s.executeUpdate(
+                "GRANT SELECT, INSERT ON accessibletbl TO sqlsam");
+            System.out.println(
+                "Granted select/insert privileges to sqlsam");
+
+            s.close();
+            conn.close();
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+
+        // Log in as user with select and insert privileges on the table,
+        //  but not delete privileges
+        try {
+            String newURL = 
+                connectionURL + ";user=sqlsam;password=light8q9bulb";
+            System.out.println("Trying to connect to " + newURL);
+            conn = DriverManager.getConnection(newURL);
+            System.out.println("Connected to database " + dbName);
+
+            // look at table
+            Statement s = conn.createStatement();
+            ResultSet rs = 
+                s.executeQuery("SELECT * FROM mary.accessibletbl");
+            rs.next();
+            System.out.println("Value of accessibletbl/textcol is " + 
+                rs.getString(1));
+
+            s.executeUpdate(
+                "INSERT INTO mary.accessibletbl VALUES('sam')");
+            System.out.println("Inserted string into table");
+            
+            rs = s.executeQuery("SELECT * FROM mary.accessibletbl");
+            while (rs.next()) {
+               System.out.println("Value of accessibletbl/textcol is " + 
+                   rs.getString(1));
+            }
+            s.close();
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+
+        try {
+            Statement s = conn.createStatement();
+
+            // this should fail
+            s.executeUpdate("DELETE FROM mary.accessibletbl " +
+                "WHERE textcol = 'hello'");
+            System.out.println("ERROR: Unexpectedly allowed to DELETE " +
+                "table mary.accessibletbl");
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            if (e.getSQLState().equals("42500")) {
+                System.out.println("Correct behavior: SQLException: " +
+                    e.getMessage());
+                try {
+                    conn.close();
+                } catch (SQLException ee) {
+                    errorPrintAndExit(ee);
+                }
+            } else {
+                errorPrintAndExit(e);
+            }
+        }
+
+        /* Log in again as mary, delete table
+         */
+        try {
+            String newURL = connectionURL + 
+                ";user=mary;password=little7xylamb";
+            System.out.println("Trying to connect to " + newURL);
+            conn = DriverManager.getConnection(newURL);
+            System.out.println("Connected to database " + dbName);
+
+            Statement s = conn.createStatement();
+            s.executeUpdate("DROP TABLE accessibletbl");
+            System.out.println("Removed table accessibletbl");
+            s.close();
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+        
+        try {
+            cleanUpAndShutDown(conn);
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+    }
+    
+    /**
+     * Close connection and shut down database. Since this is embedded
+     * mode, we must also shut down the Derby system.
+     *
+     * @param conn a connection to the database
+     */
+    public static void cleanUpAndShutDown (Connection conn)
+            throws SQLException {
+
+        String dbName="sqlAuthEmbDB";
+        String dbOwner="mary";
+        String connectionURL = "jdbc:derby:" + dbName;
+
+        try {
+            conn.close();
+            System.out.println("Closed connection");
+
+            // As mary, the database owner, shut down the database.
+            try {
+                String newURL = connectionURL + ";user=" + dbOwner +
+                    ";password=little7xylamb;shutdown=true";
+                DriverManager.getConnection(newURL);
+            } catch (SQLException se) {
+                if ( !se.getSQLState().equals("08006") ) {
+                    throw se;
+                }
+            }
+            System.out.println("Database shut down normally");
+
+            try {
+                DriverManager.getConnection("jdbc:derby:;shutdown=true");
+            } catch (SQLException se) {
+                if ( !se.getSQLState().equals("XJ015") ) {
+                    throw se;
+                }
+            }
+
+            System.out.println("Derby system shut down normally");
+        } catch (SQLException e) {
+            errorPrintAndExit(e);
+        }
+    }
+
+    /**
+     * Turn on built-in user authentication and SQL authorization.
+     *
+     * Default connection mode is fullAccess, but SQL authorization
+     * restricts access to the owners of database objects.
+     * 
+     * @param conn a connection to the database
+     */
+    public static void turnOnBuiltInUsers(Connection conn) 
+            throws SQLException {
+
+        String setProperty = 
+            "CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY(";
+        String getProperty = 
+            "VALUES SYSCS_UTIL.SYSCS_GET_DATABASE_PROPERTY(";
+        String requireAuth = "'derby.connection.requireAuthentication'";
+        String sqlAuthorization = "'derby.database.sqlAuthorization'";
+        String defaultConnMode =
+            "'derby.database.defaultConnectionMode'";
+        String fullAccessUsers = "'derby.database.fullAccessUsers'";
+        String readOnlyAccessUsers =
+            "'derby.database.readOnlyAccessUsers'";
+        String provider = "'derby.authentication.provider'";
+        String propertiesOnly = "'derby.database.propertiesOnly'";
+
+        System.out.println(
+            "Turning on authentication and SQL authorization.");
+        Statement s = conn.createStatement();
+
+        // Set requireAuthentication
+        s.executeUpdate(setProperty + requireAuth + ", 'true')");
+        // Set sqlAuthorization
+        s.executeUpdate(setProperty + sqlAuthorization + ", 'true')");
+
+        // Retrieve and display property values
+        ResultSet rs = s.executeQuery(getProperty + requireAuth + ")");
+        rs.next();
+        System.out.println(
+            "Value of requireAuthentication is " + rs.getString(1));
+
+        rs = s.executeQuery(getProperty + sqlAuthorization + ")");
+        rs.next();
+        System.out.println(
+            "Value of sqlAuthorization is " + rs.getString(1));
+
+        // Set authentication scheme to Derby builtin
+        s.executeUpdate(setProperty + provider + ", 'BUILTIN')");
+
+        // Create some sample users
+        s.executeUpdate(
+            setProperty + "'derby.user.sa', 'ajaxj3x9')");
+        s.executeUpdate(
+            setProperty + "'derby.user.guest', 'java5w6x')");
+        s.executeUpdate(
+            setProperty + "'derby.user.mary', 'little7xylamb')");
+        s.executeUpdate(
+            setProperty + "'derby.user.sqlsam', 'light8q9bulb')");
+
+        // Define noAccess as default connection mode
+        s.executeUpdate(
+            setProperty + defaultConnMode + ", 'noAccess')");
+
+        // Confirm default connection mode
+        rs = s.executeQuery(getProperty + defaultConnMode + ")");
+        rs.next();
+        System.out.println("Value of defaultConnectionMode is " +
+            rs.getString(1));
+
+        // Define read-write users
+        s.executeUpdate(
+            setProperty + fullAccessUsers + ", 'sqlsam,mary')");
+
+        // Define read-only user
+        s.executeUpdate(
+            setProperty + readOnlyAccessUsers + ", 'guest')");
+        
+        // Therefore, user sa has no access
+
+        // Confirm full-access users
+        rs = s.executeQuery(getProperty + fullAccessUsers + ")");
+        rs.next();
+        System.out.println(
+            "Value of fullAccessUsers is " + rs.getString(1));
+
+        // Confirm read-only users
+        rs = s.executeQuery(getProperty + readOnlyAccessUsers + ")");
+        rs.next();
+        System.out.println(
+            "Value of readOnlyAccessUsers is " + rs.getString(1));
+
+        // We would set the following property to TRUE only when we were
+        // ready to deploy. Setting it to FALSE means that we can always
+        // override using system properties if we accidentally paint
+        // ourselves into a corner.
+        s.executeUpdate(setProperty + propertiesOnly + ", 'false')");
+        s.close();
+    }
+
+    /** 
+     * Report exceptions, with special handling of SQLExceptions,
+     * and exit.
+     *
+     * @param e an exception (Throwable)
+     */
+    static void errorPrintAndExit(Throwable e) {
+        if (e instanceof SQLException)
+            SQLExceptionPrint((SQLException)e);
+        else {
+            System.out.println("A non-SQL error occurred.");
+            e.printStackTrace();
+        }
+        System.exit(1);
+    }
+
+    /**
+     * Iterate through a stack of SQLExceptions.
+     *
+     * @param sqle a SQLException
+     */
+    static void SQLExceptionPrint(SQLException sqle) {
+        while (sqle != null) {
+            System.out.println("\n---SQLException Caught---\n");
+            System.out.println("SQLState:   " + (sqle).getSQLState());
+            System.out.println("Severity: " + (sqle).getErrorCode());
+            System.out.println("Message:  " + (sqle).getMessage());
+            sqle = sqle.getNextException();
+        }
+    }
+}</pre>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="rdevcsecuresqlauthexs.html" title="These examples show how to use SQL authorization in conjunction with Derby's built-in user authentication and user authorization.">User authentication examples using SQL authorization</a></div>
+</div>
+</div>
+
+</body>
+</html>

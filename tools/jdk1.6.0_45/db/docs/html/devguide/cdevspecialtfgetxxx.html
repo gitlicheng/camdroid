@@ -1,0 +1,313 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="copyright" content="(C) Copyright 2005" />
+<meta name="DC.rights.owner" content="(C) Copyright 2005" />
+<meta content="public" name="security" />
+<meta content="index,follow" name="Robots" />
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<meta content="concept" name="DC.Type" />
+<meta name="DC.Title" content="Preferred getXXX() methods for Derby-style table functions" />
+<meta name="abstract" content="While scanning a Derby-style table function, Derby calls a preferred getXXX() method for each column, based on the column's data type. If Derby is running on a small device platform and presenting the JSR 169 interface to clients, then the methods which Derby calls are slightly different. This is because JSR 169 does not support BigDecimal." />
+<meta name="description" content="While scanning a Derby-style table function, Derby calls a preferred getXXX() method for each column, based on the column's data type. If Derby is running on a small device platform and presenting the JSR 169 interface to clients, then the methods which Derby calls are slightly different. This is because JSR 169 does not support BigDecimal." />
+<meta content="Functions, table function getXXX() methods" name="DC.subject" />
+<meta content="Functions, table function getXXX() methods" name="keywords" />
+<meta scheme="URI" name="DC.Relation" content="cdevspecialtfbasic.html" />
+<meta content="XHTML" name="DC.Format" />
+<meta content="cdevspecialtfgetxxx" name="DC.Identifier" />
+<meta content="en-us" name="DC.Language" />
+<link href="commonltr.css" type="text/css" rel="stylesheet" />
+<title>Preferred getXXX() methods for
+Derby-style table
+functions</title>
+</head>
+<body id="cdevspecialtfgetxxx"><a name="cdevspecialtfgetxxx"><!-- --></a>
+
+
+<h1 class="topictitle1">Preferred <em>getXXX()</em> methods for
+<span>Derby</span>-style table
+functions</h1>
+
+
+
+<div><p>While scanning a
+<span>Derby</span>-style table function,
+<span>Derby</span> calls a preferred
+<em>getXXX()</em> method for each column, based on the column's data type. If
+<span>Derby</span> is running on a small
+device platform and presenting the JSR 169 interface to clients, then the
+methods which <span>Derby</span> calls are
+slightly different. This is because JSR 169 does not support BigDecimal.
+</p>
+
+<p>The following table lists the preferred <em>getXXX()</em> method for each
+<span>Derby</span> data type.</p>
+
+
+
+<div class="tablenoborder"><a name="cdevspecialtfgetxxx__cdevspecialtftab1"><!-- --></a><table summary="" cellspacing="0" cellpadding="4" id="cdevspecialtfgetxxx__cdevspecialtftab1" frame="border" border="1" rules="all"><caption>Table 1. 
+<strong><em>getXXX()</em> Methods Called for Declared SQL Types</strong>
+</caption>
+
+
+
+
+<thead align="left">
+<tr>
+<th align="left" valign="bottom" width="60%" class="firstcol" id="N100B6">Column Type Declared by CREATE FUNCTION</th>
+
+<th align="left" valign="bottom" width="20%" id="N100BF"><em>getXXX()</em> Method Called by <span>Derby</span> for JDBC 3.0 and 4.0</th>
+
+<th align="left" valign="bottom" width="20%" id="N100D3"><em>getXXX()</em> Method Called by <span>Derby</span> for JSR 169</th>
+
+</tr>
+
+</thead>
+
+
+
+<tbody>
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N100F3" headers="N100B6 ">BIGINT</th>
+
+<td valign="top" width="20%" headers="N100F3 N100BF "><em>getLong()</em></td>
+
+<td valign="top" width="20%" headers="N100F3 N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N10112" headers="N100B6 ">BLOB</th>
+
+<td valign="top" width="20%" headers="N10112 N100BF "><em>getBlob()</em></td>
+
+<td valign="top" width="20%" headers="N10112 N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N10131" headers="N100B6 ">CHAR</th>
+
+<td valign="top" width="20%" headers="N10131 N100BF "><em>getString()</em></td>
+
+<td valign="top" width="20%" headers="N10131 N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N10150" headers="N100B6 ">CHAR FOR BIT DATA</th>
+
+<td valign="top" width="20%" headers="N10150 N100BF "><em>getBytes()</em></td>
+
+<td valign="top" width="20%" headers="N10150 N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1016F" headers="N100B6 ">CLOB</th>
+
+<td valign="top" width="20%" headers="N1016F N100BF "><em>getClob()</em></td>
+
+<td valign="top" width="20%" headers="N1016F N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1018E" headers="N100B6 ">DATE</th>
+
+<td valign="top" width="20%" headers="N1018E N100BF "><em>getDate()</em></td>
+
+<td valign="top" width="20%" headers="N1018E N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N101AD" headers="N100B6 ">DECIMAL</th>
+
+<td valign="top" width="20%" headers="N101AD N100BF "><em>getBigDecimal()</em></td>
+
+<td valign="top" width="20%" headers="N101AD N100D3 "><em>getString()</em></td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N101D0" headers="N100B6 ">DOUBLE</th>
+
+<td valign="top" width="20%" headers="N101D0 N100BF "><em>getDouble()</em></td>
+
+<td valign="top" width="20%" headers="N101D0 N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N101EF" headers="N100B6 ">DOUBLE PRECISION</th>
+
+<td valign="top" width="20%" headers="N101EF N100BF "><em>getDouble()</em></td>
+
+<td valign="top" width="20%" headers="N101EF N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1020E" headers="N100B6 ">FLOAT</th>
+
+<td valign="top" width="20%" headers="N1020E N100BF "><em>getDouble()</em></td>
+
+<td valign="top" width="20%" headers="N1020E N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1022D" headers="N100B6 ">INTEGER</th>
+
+<td valign="top" width="20%" headers="N1022D N100BF "><em>getInt()</em></td>
+
+<td valign="top" width="20%" headers="N1022D N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1024C" headers="N100B6 ">LONG VARCHAR</th>
+
+<td valign="top" width="20%" headers="N1024C N100BF "><em>getString()</em></td>
+
+<td valign="top" width="20%" headers="N1024C N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1026B" headers="N100B6 ">LONG VARCHAR FOR BIT DATA</th>
+
+<td valign="top" width="20%" headers="N1026B N100BF "><em>getBytes()</em></td>
+
+<td valign="top" width="20%" headers="N1026B N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1028A" headers="N100B6 ">NUMERIC</th>
+
+<td valign="top" width="20%" headers="N1028A N100BF "><em>getBigDecimal()</em></td>
+
+<td valign="top" width="20%" headers="N1028A N100D3 "><em>getString()</em></td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N102AD" headers="N100B6 ">REAL</th>
+
+<td valign="top" width="20%" headers="N102AD N100BF "><em>getFloat()</em></td>
+
+<td valign="top" width="20%" headers="N102AD N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N102CC" headers="N100B6 ">SMALLINT</th>
+
+<td valign="top" width="20%" headers="N102CC N100BF "><em>getShort()</em></td>
+
+<td valign="top" width="20%" headers="N102CC N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N102EB" headers="N100B6 ">TIME</th>
+
+<td valign="top" width="20%" headers="N102EB N100BF "><em>getTime()</em></td>
+
+<td valign="top" width="20%" headers="N102EB N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N1030A" headers="N100B6 ">TIMESTAMP</th>
+
+<td valign="top" width="20%" headers="N1030A N100BF "><em>getTimestamp()</em></td>
+
+<td valign="top" width="20%" headers="N1030A N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N10329" headers="N100B6 ">VARCHAR</th>
+
+<td valign="top" width="20%" headers="N10329 N100BF "><em>getString()</em></td>
+
+<td valign="top" width="20%" headers="N10329 N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N10348" headers="N100B6 ">VARCHAR FOR BIT DATA</th>
+
+<td valign="top" width="20%" headers="N10348 N100BF "><em>getBytes()</em></td>
+
+<td valign="top" width="20%" headers="N10348 N100D3 ">Same</td>
+
+</tr>
+
+
+<tr>
+<th valign="top" width="60%" class="firstcol" id="N10367" headers="N100B6 ">XML</th>
+
+<td valign="top" width="20%" headers="N10367 N100BF "><strong>Not supported</strong></td>
+
+<td valign="top" width="20%" headers="N10367 N100D3 "><strong>Not supported</strong></td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+</div>
+
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="cdevspecialtfbasic.html" title="A Derby-style table function is a method which returns a JDBC ResultSet.">Overview of Derby-style table functions</a></div>
+</div>
+</div>
+
+</body>
+</html>

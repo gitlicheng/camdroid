@@ -1,0 +1,311 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="copyright" content="(C) Copyright 2005" />
+<meta name="DC.rights.owner" content="(C) Copyright 2005" />
+<meta content="public" name="security" />
+<meta content="index,follow" name="Robots" />
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<meta content="reference" name="DC.Type" />
+<meta name="DC.Title" content="SYSXPLAIN_STATEMENTS system table" />
+<meta scheme="URI" name="DC.Relation" content="rref_xplain_tables.html" />
+<meta content="XHTML" name="DC.Format" />
+<meta content="rrefsysxplain_statements" name="DC.Identifier" />
+<meta content="en-us" name="DC.Language" />
+<link href="commonltr.css" type="text/css" rel="stylesheet" />
+<title>SYSXPLAIN_STATEMENTS system table</title>
+</head>
+<body id="rrefsysxplain_statements"><a name="rrefsysxplain_statements"><!-- --></a>
+
+
+<h1 class="topictitle1">SYSXPLAIN_STATEMENTS system table</h1>
+
+<div>
+    <div class="section"><p>This table captures information about statements which have been
+            executed using RUNTIMESTATISTICS with XPLAIN style (see the
+            RUNTIMESTATISTICS section in the
+            <span><em>Java DB Reference Manual</em></span> for more information
+            on how to configure this).
+        </p>
+
+        <p>
+            Each row in this table describes a single statement which has
+            been captured. Depending on the precise configuration of the
+            RUNTIMESTATISTICS and XPLAIN features, there may be additional
+            rows in the other XPLAIN system tables with additional information;
+            the STMT_ID and TIMING_ID columns in this table are used to join
+            against those tables.</p>
+<p>Rows in this table are added
+            automatically when 
+            <span>Derby</span>
+            has been configured appropriately. The
+            rows remain in the table until you delete them or drop the table.
+                </p>
+
+    <p>
+            See "Working with RunTimeStatistics" in the 
+            <span><em>Tuning Java DB</em></span>
+            for additional information.
+            </p>
+
+                <div class="p">   
+<div class="tablenoborder"><table summary="" cellspacing="0" cellpadding="4" width="100%" frame="border" border="1" rules="all">
+
+<thead align="left">
+<tr>
+<th align="left" valign="bottom" width="23.762376237623762%" id="N1008F">Column Name</th>
+
+<th align="left" valign="bottom" width="22.772277227722775%" id="N10098">Type</th>
+
+<th align="left" valign="bottom" width="10.891089108910892%" id="N100A1">Length</th>
+
+<th align="left" valign="bottom" width="13.861386138613863%" id="N100AA">Nullability</th>
+
+<th align="left" valign="bottom" width="28.71287128712871%" id="N100B3">Contents</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">STMT_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">36</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">A unique identifier for this particular captured statement.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">STMT_NAME</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">128</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">The name of the associated query or statement. This value
+    is NULL if the user did not assign a name. I'm not sure how the
+    user assigns a name to a statement, perhaps by
+    calling Statement.setCursorName()?</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">STMT_TYPE</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">6</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">A code indicating what type of statement this is:
+    '<em>S</em>'=SELECT, '<em>I</em>'=INSERT, '<em>U</em>'=UPDATE,
+    '<em>D</em>'=DELETE, '<em>C</em>'=CALL, '<em>DDL</em>'=Data Definition, such
+    as CREATE TABLE, '<em>SA</em>'=SELECT (Approximate), or blank,
+indicating the statement was a comment.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">STMT_TEXT</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">32672</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">The text of the statement.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">JVM_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">30</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">A code indicating what version of the JVM was running
+    when this statement was captured: '4'=J2SE_14 - JDK 1.4.0 or 1.4.1,
+    '5'= J2SE_142 - JDK 1.4.2, '6'=J2SE_15 - JDK 1.5,
+    '7'=J2SE_16 - JDK 1.6
+</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">OS_IDENTIFIER</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">30</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">Contains information about the operating system 
+which was being used when this statement was captured.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">XPLAIN_MODE</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">1</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">A code indicating the XPLAIN mode which was in use
+    when this statement was captured: '<em>F</em>'=FULL, '<em>O</em>'=ONLY.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">XPLAIN_TIME</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">TIMESTAMP</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">&nbsp;</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">Contains the date and time when this statement
+was captured.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">XPLAIN_THREAD_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">32</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">The JVM thread which was running when this statement
+was captured.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">TRANSACTION_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">32</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">An internal identifier for the transaction which was
+active when this statement was captured.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">SESSION_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">32</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">An internal identifier for the session which was
+active when this statement was captured.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">DATABASE_NAME</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">VARCHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">128</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">false</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">Contains the name of the database which was being
+used when this statement was captured.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">DRDA_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">32</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">In a network environment, this column contains
+    an internal identifier for the network connection which was
+    active when this statement was captured. In an embedded environment,
+this column is null.</td>
+
+</tr>
+
+<tr>
+<td valign="top" width="23.762376237623762%" headers="N1008F ">TIMING_ID</td>
+
+<td valign="top" width="22.772277227722775%" headers="N10098 ">CHAR</td>
+
+<td valign="top" width="10.891089108910892%" headers="N100A1 ">36</td>
+
+<td valign="top" width="13.861386138613863%" headers="N100AA ">true</td>
+
+<td valign="top" width="28.71287128712871%" headers="N100B3 ">This field will be NULL unless
+    SYSCS_UTIL.SYSCS_SET_STATISTICS_TIMING has been called to enable
+    statistics timing. If statistics timings are being captured, then this
+    column will contain the ID of the row in SYSXPLAIN_STATEMENT_TIMINGS
+which record the statement timing for this statement.</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="rref_xplain_tables.html" title="">XPLAIN style tables</a></div>
+</div>
+</div>
+
+</body>
+</html>

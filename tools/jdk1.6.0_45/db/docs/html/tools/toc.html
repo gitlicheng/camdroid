@@ -1,0 +1,217 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+<head><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base target="contentwin"><title>Java DB Tools and Utilities Guide</title>
+</head>
+<body>
+<UL>
+<LI><a href="rtoolscopyright.html">Copyright</a></LI>
+<LI><a href="rtoolslicense.html">License</a></LI>
+<LI><a href="ctoolsjavadb.html">Relationship between Java DB and Derby</a></LI>
+<LI><a href="ctoolspre29520.html">About this guide</a>
+<UL>
+<LI><a href="ctoolspre11181.html">Purpose of this document</a></LI>
+<LI><a href="ctoolspre22460.html">Audience</a></LI>
+<LI><a href="ctoolspre23947.html">How this guide is organized</a></LI>
+</UL>
+</LI>
+<LI><a href="ctoolsijtools26429.html">What are the Derby tools and utilities?</a>
+<UL>
+<LI><a href="ctoolsijtools30948.html">Overview</a>
+<UL>
+<LI><a href="ctoolsijtools37363.html">Environment setup and the Derby tools</a>
+<UL>
+<LI><a href="ctools1003034.html">Java 2 Platform, Standard Edition, Version 1.4</a></LI>
+<LI><a href="rtools1003161.html">Classpath</a></LI>
+</UL>
+</LI>
+</UL>
+</LI>
+<LI><a href="ctoolsijtools25085.html">About Derby databases</a></LI>
+<LI><a href="ctoolsijtools20118.html">JDBC connection basics</a>
+<UL>
+<LI><a href="rtoolsijtools16879.html">JDBC drivers overview</a></LI>
+<LI><a href="ctoolsijtools16011.html">Database connection URLs</a></LI>
+</UL>
+</LI>
+<LI><a href="ctoolsijtools11318.html">Tools and localization</a>
+<UL>
+<LI><a href="ctools1004764.html">About locales</a></LI>
+<LI><a href="ctoolsijtools45180.html">Database territory</a></LI>
+<LI><a href="ctoolsijtools70959.html">Specifying an alternate codeset</a></LI>
+<LI><a href="ctoolsijtools90477.html">Formatting display of locale-sensitive data</a></LI>
+</UL>
+</LI>
+</UL>
+</LI>
+<LI><a href="ctoolsij34525.html">Using ij</a>
+<UL>
+<LI><a href="ttoolsij11815.html">Starting ij</a></LI>
+<LI><a href="ttoolsijcreatedatabase.html">Creating a database using ij</a></LI>
+<LI><a href="ttoolsij30600.html">Starting ij using properties</a></LI>
+<LI><a href="ctoolsij32837.html">Getting started with ij</a>
+<UL>
+<LI><a href="ttoolsij97656.html">Connecting to a Derby database</a>
+<UL>
+<LI><a href="rtoolsdrvrnmeurl.html">The ij Driver name and connection URL</a></LI>
+</UL>
+</LI>
+<LI><a href="ctoolsij25986.html">Using ij commands</a>
+<UL>
+<LI><a href="ctoolsij12001.html">Other uses for ij</a></LI>
+</UL>
+</LI>
+<LI><a href="ttoolsij98878.html">Running ij scripts</a></LI>
+</UL>
+</LI>
+</UL>
+</LI>
+<LI><a href="rtoolsijpropref29864.html">ij properties reference</a>
+<UL>
+<LI><a href="rtoolsijpropref10135.html">ij.connection.connectionName property</a></LI>
+<LI><a href="rtoolsijpropref28146.html">ij.database property</a></LI>
+<LI><a href="rtoolsijproprefdatasource.html">ij.dataSource property</a></LI>
+<LI><a href="rtoolsijpropref41073.html">ij.driver property</a></LI>
+<LI><a href="rtoolsijproprefexceptiontrace.html">ij.exceptionTrace property</a></LI>
+<LI><a href="rtoolsijpropref28788.html">ij.maximumDisplayWidth property</a></LI>
+<LI><a href="rtoolsijpropref32585.html">ij.outfile property</a></LI>
+<LI><a href="rtoolsijproprefpassword.html">ij.password property</a></LI>
+<LI><a href="rtoolsijpropref35032.html">ij.protocol property</a></LI>
+<LI><a href="rtoolsijpropref12236.html">ij.protocol.protocolName property</a></LI>
+<LI><a href="rtoolsijpropref25589.html">ij.showErrorCode property</a></LI>
+<LI><a href="rtoolsijproprefshownoconn.html">ij.showNoConnectionsAtStart property</a></LI>
+<LI><a href="rtoolsijproprefshownoselectcount.html">ij.showNoCountForSelect property</a></LI>
+<LI><a href="rtoolsijpropref38481.html">ij.URLCheck property</a></LI>
+<LI><a href="rtoolsijproprefuser.html">ij.user property</a></LI>
+<LI><a href="rtoolsijpropref97949.html">derby.ui.codeset property</a></LI>
+<LI><a href="rtoolsijlocale.html">derby.ui.locale property</a></LI>
+</UL>
+</LI>
+<LI><a href="rtoolsijcomref25570.html">ij commands and errors reference</a>
+<UL>
+<LI><a href="ctoolsijcomref23268.html">ij commands</a>
+<UL>
+<LI><a href="rtoolsijcomref1003067.html">Conventions for ij examples</a></LI>
+<LI><a href="ctoolsijcomref15645.html">ij SQL command behavior</a>
+<UL>
+<LI><a href="rtoolsijcomref1003444.html">ij command example</a></LI>
+</UL>
+</LI>
+</UL>
+</LI>
+<LI><a href="rtoolsijcomref94092.html">Absolute command</a></LI>
+<LI><a href="rtoolsijcomref11943.html">After Last command</a></LI>
+<LI><a href="rtoolsijcomref37862.html">Async command</a></LI>
+<LI><a href="rtoolsijcomref25753.html">Autocommit command</a></LI>
+<LI><a href="rtoolsijcomref79286.html">Before First command</a></LI>
+<LI><a href="rtoolsijcomref24423.html">Close command</a></LI>
+<LI><a href="rtoolsijcomref31510.html">Commit command</a></LI>
+<LI><a href="rtoolsijcomref22318.html">Connect command</a></LI>
+<LI><a href="rtoolsijcomrefdescribe.html">Describe command</a></LI>
+<LI><a href="rtoolsijcomref20382.html">Disconnect command</a></LI>
+<LI><a href="rtoolsijcomref39042.html">Driver command</a></LI>
+<LI><a href="rtoolsijcomref18077.html">Elapsedtime command</a></LI>
+<LI><a href="rtoolsijcomref30679.html">Execute command</a></LI>
+<LI><a href="rtoolsijcomref33358.html">Exit command</a></LI>
+<LI><a href="rtoolsijcomref61708.html">First command</a></LI>
+<LI><a href="rtoolsijcomref36618.html">Get Cursor command</a></LI>
+<LI><a href="rtoolsijcomref62772.html">Get Scroll Insensitive Cursor command</a></LI>
+<LI><a href="rtoolsijcomref10316.html">Help command</a></LI>
+<LI><a href="rtoolsijcomref53869.html">Last command</a></LI>
+<LI><a href="rtoolsijcomref88554.html">LocalizedDisplay command</a></LI>
+<LI><a href="rtoolsijcomref12281.html">MaximumDisplayWidth command</a></LI>
+<LI><a href="rtoolsijcomref11128.html">Next command</a></LI>
+<LI><a href="rtoolsijcomref12333.html">Prepare command</a></LI>
+<LI><a href="rtoolsijcomref44032.html">Previous command</a></LI>
+<LI><a href="rtoolsijcomref27997.html">Protocol command</a></LI>
+<LI><a href="rtoolsijcomref61092.html">Readonly command</a></LI>
+<LI><a href="rtoolsijcomref97975.html">Relative command</a></LI>
+<LI><a href="rtoolsijcomref33373.html">Remove command</a></LI>
+<LI><a href="rtoolsijcomref12297.html">Rollback command</a></LI>
+<LI><a href="rtoolsijcomref28886.html">Run command</a></LI>
+<LI><a href="rtoolsijcomref39198.html">Set Connection command</a></LI>
+<LI><a href="rtoolsijcomrefshow.html">Show command</a></LI>
+<LI><a href="rtoolsijcomref17631.html">Wait For command</a></LI>
+<LI><a href="rtoolsijcomref16653.html">Syntax for comments in ij commands</a></LI>
+<LI><a href="rtoolsijcomref40155.html">Syntax for identifiers in ij commands</a></LI>
+<LI><a href="rtoolsijcomref34110.html">Syntax for strings in ij commands</a></LI>
+<LI><a href="ctoolsijcomref18998.html">ij errors</a>
+<UL>
+<LI><a href="ctoolsijcomref36744.html">ERROR SQLState</a></LI>
+<LI><a href="ctoolsijcomref21190.html">WARNING SQLState</a></LI>
+<LI><a href="ctoolsijcomref30411.html">IJ ERROR</a></LI>
+<LI><a href="ctoolsijcomref32407.html">IJ WARNING</a></LI>
+<LI><a href="ctoolsijcomref14191.html">JAVA ERROR</a></LI>
+</UL>
+</LI>
+</UL>
+</LI>
+<LI><a href="ctoolsimport16245.html">Using the bulk import and export procedures</a>
+<UL>
+<LI><a href="ctoolsimport98264.html">Methods for running the import and export procedures</a></LI>
+<LI><a href="ctoolsimport27052.html">Bulk import and export requirements and considerations</a></LI>
+<LI><a href="ctoolsimportlobs.html">Bulk import and export of large objects</a></LI>
+<LI><a href="ctoolsimportdefaultformat.html">File format for input and output</a></LI>
+<LI><a href="ttoolsimporting.html">Importing data using the built-in procedures</a>
+<UL>
+<LI><a href="rtoolsimport64241.html">Parameters for the import procedures</a></LI>
+<LI><a href="ctoolsimportidentitycol.html">Import into tables that contain identity columns</a></LI>
+</UL>
+</LI>
+<LI><a href="ttoolsexporting.html">Exporting data using the built-in procedures</a>
+<UL>
+<LI><a href="rtoolsexportarguements.html">Parameters for the export procedures</a></LI>
+</UL>
+</LI>
+<LI><a href="rtoolsimport91458.html">Examples of bulk import and export</a></LI>
+<LI><a href="ctoolsimportjdbc.html">Import and export procedures from JDBC</a></LI>
+<LI><a href="ctoolsimportnulls.html">How the Import and export procedures process NULL values</a></LI>
+<LI><a href="rtoolsimportcodeset.html">CODESET values for import and export procedures</a></LI>
+</UL>
+</LI>
+<LI><a href="ctoolsstorejardb.html">Storing jar files in a database</a>
+<UL>
+<LI><a href="ttoolsjarload1002986.html">Adding a Jar File</a></LI>
+<LI><a href="ttoolsjarload1003059.html">Removing a jar file</a></LI>
+<LI><a href="ttoolsjarload1003120.html">Replacing a jar file</a></LI>
+<LI><a href="rtoolsjarload3284.html">Installing a jar example</a></LI>
+</UL>
+</LI>
+<LI><a href="rtoolssysinfo41288.html">sysinfo</a>
+<UL>
+<LI><a href="rtoolssysinfo1002629.html">sysinfo example</a></LI>
+<LI><a href="ctoolssysinfo1002931.html">Using sysinfo to check the classpath</a></LI>
+</UL>
+</LI>
+<LI><a href="ctoolsdblook.html">dblook</a>
+<UL>
+<LI><a href="ctoolsusingdblook.html">Using dblook</a></LI>
+<LI><a href="rtoolsdblookoptions.html">dblook options</a></LI>
+<LI><a href="ctoolsgenddldb.html">Generating the DDL for a database</a></LI>
+<LI><a href="rtoolsdblookexamples.html">dblook examples</a></LI>
+</UL>
+</LI>
+<LI><a href="ctoolssigcheck.html">SignatureChecker</a>
+<UL>
+<LI><a href="ctoolsusingsigcheck.html">Using SignatureChecker</a></LI>
+</UL>
+</LI>
+<LI><a href="rtoolstrademderby.html">Trademarks</a></LI>
+</UL>
+</body>
+</html>

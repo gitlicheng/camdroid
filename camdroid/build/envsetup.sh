@@ -1267,7 +1267,7 @@ do
 done
 unset f
 
-export JAVA_HOME=$PWD/../jdk1.6.0_45
+export JAVA_HOME=$PWD/../tools/jdk1.6.0_45
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=$JAVA_HOME/lib:$PATH
 export JRE_PATH=$JAVA_HOME/jre:$PATH
