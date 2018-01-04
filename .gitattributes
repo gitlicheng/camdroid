@@ -1,0 +1,2 @@
+lichee/buildroot/target/dragonboard/sysroot.tar.gz filter=lfs diff=lfs merge=lfs -text
+lichee/buildroot/target/test/a1x-test.tar.gz filter=lfs diff=lfs merge=lfs -text
