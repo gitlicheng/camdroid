@@ -24,9 +24,9 @@ Interface:
 
 ### Build
 ```
-git clone https://github.com/mirkerson/Mango-Pi.git
+git clone git://github.com/mirkerson/Mango-Pi.git
 
-cd mago-pi/camdriod
+cd mango-pi/camdriod
 source build/envsetup.sh
 lunch
 mklichee
@@ -35,7 +35,17 @@ make -j8
 pack
 
 ```
-
 The Project use Large files, so You may install git lfs in https://git-lfs.github.com/
+
+### Flash
+```
+sudo apt-get install dkms
+sudo dpkg -i awdev-dkms_0.5_all.deb
+cd mango-pi/tools/LiveSuit
+sudo ./LiveSuit.sh
+
+```
+Press a non-power key, then plugin the usb cable wait 1 minutes.
+
 
 ### Join the chat at QQ Group: 560888351 
