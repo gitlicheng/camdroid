@@ -162,8 +162,12 @@ build_kernel()
 #        cp arch/arm/configs/${LICHEE_KERN_DEFCONF} .config
 		 cp arch/arm/configs/sun8iw8p1smp_tiger_cdr_defconfig .config
     fi
-
-    make ARCH=arm CROSS_COMPILE=${CROSS_COMPILE} -j${LICHEE_JLEVEL} uImage modules
+	
+    	#add by kerson, prevent build jammed
+    	cpu_core=`cat /proc/cpuinfo | grep "processor" | wc -l`
+    	LICHEE_JLEVEL=${cpu_core}
+    
+	make ARCH=arm CROSS_COMPILE=${CROSS_COMPILE} -j${LICHEE_JLEVEL} uImage modules
   
 	update_kern_ver
 
