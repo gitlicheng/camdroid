@@ -1,32 +1,35 @@
-# Welcome to Mango Pi
-# About
-Mango Pi is a Open Source Board
+#### 芒果派是一款基于全志V3S Soc的高性能，功能全，性价比高，可任意放飞想法，实现各种DIY产品的开发板
     
-# Features
+##### 特性
 ```
-CPU:    ALLWINNER V3S ARM Cortex-A7, max frequency 1.2G
-DRR2:   integrated 512M DDR2 in SOC
-ROM:    32MB SPI Nor Flash
-LCD:    general 40P RGB LCD FPC socket
+CPU:    ARM Cortex-A7, 最大频率 1.2G
+DRR2:   Soc 集成 512Mbit DDR2
+ROM:    板载 128Mbit SPI Nor Flash
+LCD:    板载 480x272 LCD ,通用 40pin 接口
         
-WIFI:   ESP8909 in Board
-Interface:  
+WIFI:   板载 ESP8909 wifi soc
+接口:  
         SDIO
-        SPI
-        I2C
-        UART
+        I2C 
+        板载 USB TO UART 调试接口 
         100M Ethernet (contain EPHY)
         OTG USB
         MIPI CSI
-        SPEAKER + MIC
+        Headset + Mic
         
 ```
 
-### Build
-```
-git clone git://github.com/mirkerson/Mango-Pi.git
 
-cd mango-pi/camdriod
+##### 芒果派支持两种内核引导该仓库支持原厂bsp版本linux-3.4内核，基于全志fex内核dts配置适配板上所有接口,开发板demo支持1080p 摄像头录像,拍照,回放. 如果想使用主线linux,基于dts配置可参考该仓库 https://github.com/mirkerson/linux-4.10, 主线仓库目前不支持摄像头，还在努力中.需要作产品用户建议使用camroid,大众玩家可选择主线linux 任意玩耍.
+##### 编译
+```
+基于ubuntu 16.04, 每个系统版本不一样编译环境依赖可能有所差异请自行解决,先安装camdroid 需要的依赖工具和包
+sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs x11proto-core-dev libx11-dev lib32readline-gplv2-dev lib32z1-dev libgl1-mesa-dev g++-multilib mingw32 tofrodos python-markdown libxml2-utils xsltproc
+如果提示没有该包可先删除改包安装其他的.
+
+git clone https://github.com/mirkerson/camdroid
+
+cd camdroid/camdriod
 source build/envsetup.sh
 lunch
 mklichee
@@ -35,17 +38,17 @@ make -j8
 pack
 
 ```
-The Project use Large files, so You may install git lfs in https://git-lfs.github.com/
+由于使用了git large file system, 如果git 拉代码有问题请参考如下网址 https://git-lfs.github.com/
 
-### Flash
+### 烧录
 ```
 sudo apt-get install dkms
 sudo dpkg -i awdev-dkms_0.5_all.deb
-cd mango-pi/tools/LiveSuit
+cd camdroid/tools/LiveSuit
 sudo ./LiveSuit.sh
 
 ```
-Press a non-power key, then plugin the usb cable wait 1 minutes.
+按住板上FLASH烧录按钮，插入USB线.
 
 
-### Join the chat at QQ Group: 560888351 
+### 有任何疑问欢迎联系本人 QQ:252915145 ,或加QQ群 560888351 进行更多有意思的讨论
